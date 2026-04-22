@@ -1,0 +1,3010 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habla — Aprenda espanhol de verdade</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS ─────────────────────────────────────────── */
+:root{
+  --red:      #C62828;
+  --red-dark: #b71c1c;
+  --red-light:#ffebee;
+  --yellow:   #FBC02D;
+  --yellow-dk:#F57F17;
+  --yellow-lt:#fff8e1;
+  --bg:       #F5F5F5;
+  --white:    #FFFFFF;
+  --text:     #333333;
+  --muted:    #757575;
+  --border:   #E0E0E0;
+  --shadow:   0 2px 12px rgba(0,0,0,.08);
+  --radius:   16px;
+  --section-pad: 96px 48px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+
+/* ── SISTEMA DE SEÇÕES ──────────────────────────────────── */
+section{scroll-margin-top:64px}
+
+/* Divisor sutil entre seções claras */
+.exp,
+.howuse{border-top:1px solid var(--border)}
+
+/* Inner containers padronizados */
+.exp-inner,
+.maestro-inner,
+.howuse-inner,
+.proof-inner,
+.access-inner{max-width:1140px;margin:0 auto}
+
+/* Cabeçalhos de seção — padrão */
+.section-header{margin-bottom:56px}
+.section-header .section-sub{
+  margin-top:12px;
+  font-size:1rem;
+  color:var(--muted);
+  line-height:1.7;
+  max-width:560px;
+}
+
+/* Depoimentos sobre fundo branco */
+.proof{border-top:1px solid var(--border)}
+
+/* ── HERO ───────────────────────────────────────────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes heroFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+@keyframes shimmer{
+  0%{background-position:200% center}
+  100%{background-position:-200% center}
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:var(--white);
+}
+
+/* Fundo refinado */
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 80% at 80% 40%, rgba(198,40,40,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 95% 0%, rgba(251,192,45,.08) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 0% 100%, rgba(198,40,40,.04) 0%, transparent 50%);
+}
+
+/* Linha decorativa vertical */
+.hero-line{
+  position:absolute;left:50%;top:0;bottom:0;
+  width:1px;background:linear-gradient(to bottom,transparent,rgba(198,40,40,.08) 30%,rgba(198,40,40,.08) 70%,transparent);
+  pointer-events:none;
+}
+
+/* Navbar */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 48px;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 1px 12px rgba(0,0,0,.06);
+}
+.nav-logo{
+  font-family:'Poppins',sans-serif;font-size:1.25rem;font-weight:800;
+  color:var(--red);text-decoration:none;
+  display:flex;align-items:center;gap:6px;
+  flex-shrink:0;
+}
+.nav-links{
+  display:flex;align-items:center;gap:6px;
+  flex:1;justify-content:center;
+}
+.nav-links a{
+  font-size:.875rem;font-weight:500;color:var(--muted);
+  text-decoration:none;padding:6px 14px;border-radius:8px;
+  transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:var(--red);background:var(--red-light)}
+.nav-cta{
+  background:var(--red);color:#fff;
+  border:none;padding:9px 22px;border-radius:100px;
+  font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;
+  cursor:pointer;text-decoration:none;
+  transition:background .2s,transform .2s;
+  flex-shrink:0;
+}
+.nav-cta:hover{background:var(--red-dark);transform:translateY(-1px)}
+
+/* Layout interno */
+.hero-inner{
+  max-width:1160px;margin:0 auto;
+  padding:120px 48px 80px;
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:72px;
+  align-items:center;
+  position:relative;z-index:1;
+  width:100%;
+}
+
+/* ── LADO ESQUERDO ── */
+.hero-left{animation:fadeUp .7s ease both}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--yellow-lt);
+  border:1.5px solid rgba(251,192,45,.5);
+  border-radius:100px;
+  padding:6px 16px 6px 10px;
+  margin-bottom:36px;
+}
+.hero-badge-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--yellow);
+  flex-shrink:0;
+}
+.hero-badge span{
+  font-size:.75rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--yellow-dk);
+}
+
+.hero-label{
+  font-size:.82rem;font-weight:500;
+  color:var(--muted);letter-spacing:.02em;
+  margin-bottom:10px;
+}
+
+.hero-title{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(2.4rem,4.5vw,3.6rem);
+  font-weight:900;
+  line-height:1.08;
+  color:var(--text);
+  margin-bottom:10px;
+  letter-spacing:-.02em;
+}
+
+.hero-maestro{
+  display:block;
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:700;
+  letter-spacing:-.01em;
+  background:linear-gradient(90deg,#C62828 0%,#e53935 40%,#FBC02D 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+  margin-bottom:28px;
+}
+
+.hero-sub{
+  font-size:1.05rem;
+  color:#666;
+  line-height:1.8;
+  max-width:460px;
+  margin-bottom:40px;
+  font-style:italic;
+  border-left:3px solid var(--yellow);
+  padding-left:18px;
+}
+
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--red);color:#fff;
+  font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;
+  padding:16px 36px;border-radius:100px;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 8px 28px rgba(198,40,40,.32);
+  transition:background .2s,transform .2s,box-shadow .2s;
+  margin-bottom:24px;
+}
+.hero-cta:hover{
+  background:var(--red-dark);
+  transform:translateY(-2px);
+  box-shadow:0 14px 36px rgba(198,40,40,.42);
+}
+.hero-cta-arrow{transition:transform .2s}
+.hero-cta:hover .hero-cta-arrow{transform:translateX(4px)}
+
+.hero-note{
+  font-size:.82rem;color:var(--muted);
+  display:flex;align-items:center;gap:6px;
+}
+.hero-note::before{
+  content:'🔒';font-size:.8rem;
+}
+
+/* ── LADO DIREITO — Cartão de boas-vindas ── */
+.hero-right{
+  position:relative;
+  animation:fadeUp .7s .2s ease both;
+}
+
+.hero-card{
+  background:var(--white);
+  border-radius:24px;
+  box-shadow:0 32px 80px rgba(0,0,0,.10),0 0 0 1px rgba(0,0,0,.04);
+  overflow:hidden;
+}
+
+/* Cabeçalho do card — gradiente premium */
+.hc-header{
+  background:linear-gradient(135deg,#1a0a0a 0%,#2d0b0b 50%,#3d1010 100%);
+  padding:32px 32px 28px;
+  position:relative;overflow:hidden;
+}
+.hc-header::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 20%,rgba(198,40,40,.35) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 80%,rgba(251,192,45,.15) 0%,transparent 50%);
+}
+.hc-header-content{position:relative;z-index:1}
+
+.hc-tag{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(251,192,45,.8);
+  margin-bottom:14px;
+}
+.hc-welcome{
+  font-family:'Poppins',sans-serif;
+  font-size:1.45rem;font-weight:800;
+  color:#fff;line-height:1.25;margin-bottom:6px;
+}
+.hc-welcome span{color:#FBC02D}
+.hc-prof{
+  font-size:.85rem;color:rgba(255,255,255,.6);
+  letter-spacing:.01em;
+}
+
+/* Barra de acesso ao nível */
+.hc-level-bar{
+  display:flex;align-items:center;gap:12px;
+  margin-top:22px;
+  background:rgba(255,255,255,.07);
+  border-radius:12px;padding:12px 16px;
+}
+.hc-level-badge{
+  background:var(--red);color:#fff;
+  font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:800;
+  width:44px;height:44px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.hc-level-info{flex:1}
+.hc-level-label{font-size:.68rem;color:rgba(255,255,255,.5);margin-bottom:5px;letter-spacing:.04em;text-transform:uppercase}
+.hc-progress-wrap{background:rgba(255,255,255,.12);border-radius:100px;height:5px}
+.hc-progress-fill{height:5px;border-radius:100px;background:linear-gradient(90deg,#C62828,#FBC02D);width:48%}
+.hc-level-pct{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:4px}
+
+/* Corpo do card */
+.hc-body{padding:24px 28px}
+
+.hc-section-label{
+  font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--muted);margin-bottom:14px;
+}
+
+.hc-module{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 12px;border-radius:12px;
+  margin-bottom:6px;transition:background .15s;cursor:default;
+}
+.hc-module:hover{background:var(--red-light)}
+.hc-module-icon{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.hcm-done{background:#e8f5e9}
+.hcm-active{background:var(--red-light)}
+.hcm-locked{background:var(--bg)}
+.hc-module-info{flex:1}
+.hc-module-name{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:1px}
+.hc-module-meta{font-size:.72rem;color:var(--muted)}
+.hc-module-status{font-size:.72rem;font-weight:700;flex-shrink:0}
+.hcms-done{color:#2e7d32}
+.hcms-active{color:var(--red)}
+.hcms-locked{color:#ccc}
+
+/* Botão de acesso no card */
+.hc-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:18px;
+  background:var(--red);color:#fff;
+  font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:700;
+  padding:13px;border-radius:12px;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background .2s;
+}
+.hc-btn:hover{background:var(--red-dark)}
+
+/* Badge flutuante */
+.hc-float{
+  position:absolute;
+  background:var(--white);
+  border-radius:14px;
+  box-shadow:0 8px 28px rgba(0,0,0,.12);
+  padding:10px 16px;
+  display:flex;align-items:center;gap:8px;
+  font-size:.78rem;font-weight:700;color:var(--text);
+  white-space:nowrap;
+  animation:heroFloat 4s ease-in-out infinite;
+}
+.hc-float-1{top:-16px;right:24px;animation-delay:0s}
+.hc-float-2{bottom:20px;left:-28px;animation-delay:2s}
+.hc-float-icon{font-size:1rem}
+
+/* Stats minimalistas */
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border);
+  margin-top:48px;padding-top:32px;
+}
+.stat-item{
+  text-align:center;padding:0 20px;
+  border-right:1px solid var(--border);
+}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:900;color:#C62828;display:block}
+.stat-label{font-size:.8rem;color:#757575;margin-top:2px}
+
+/* ── BENEFITS ───────────────────────────────────────────── */
+.benefits{
+  background:#F5F5F5;
+  padding:96px 48px;
+}
+.benefits-inner{max-width:1100px;margin:0 auto}
+
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red-light);border:1.5px solid var(--red);
+  color:var(--red);font-size:.72rem;font-weight:700;
+  padding:5px 14px;border-radius:20px;margin-bottom:14px;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.section-header{margin-bottom:52px}
+.section-title{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;
+  color:var(--text);line-height:1.2;
+  margin-bottom:10px;
+}
+.section-sub{
+  font-size:1rem;color:var(--muted);
+  max-width:520px;line-height:1.65;
+  margin-top:10px;
+  margin-bottom:0;
+}
+
+/* Grid principal de benefícios */
+.benefits-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-bottom:48px;
+}
+.benefit-card{
+  background:#fff;
+  border-radius:16px;
+  padding:28px 24px;
+  border:1.5px solid #E0E0E0;
+  transition:.2s;
+  position:relative;
+  overflow:hidden;
+}
+.benefit-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:3px;
+  background:var(--accent,#C62828);
+}
+.benefit-card:hover{
+  border-color:var(--accent,#C62828);
+  box-shadow:0 8px 28px rgba(0,0,0,.08);
+  transform:translateY(-3px);
+}
+.benefit-icon{
+  font-size:1.8rem;
+  margin-bottom:14px;
+  display:block;
+}
+.benefit-title{
+  font-family:'Poppins',sans-serif;
+  font-size:1rem;font-weight:700;
+  color:#333333;margin-bottom:8px;
+}
+.benefit-desc{
+  font-size:.875rem;color:#555555;
+  line-height:1.65;
+}
+.benefit-tag{
+  display:inline-block;
+  margin-top:14px;
+  font-size:.7rem;font-weight:700;
+  padding:3px 10px;border-radius:20px;
+  background:var(--tag-bg,#ffebee);
+  color:var(--accent,#C62828);
+  letter-spacing:.03em;
+}
+
+/* Bloco de destaque central */
+.benefits-highlight{
+  background:linear-gradient(135deg,#C62828,#e53935);
+  border-radius:20px;
+  padding:48px;
+  display:flex;align-items:center;
+  gap:48px;flex-wrap:wrap;
+  color:#fff;
+}
+.highlight-left{flex:1;min-width:260px}
+.highlight-left h3{
+  font-family:'Poppins',sans-serif;
+  font-size:1.6rem;font-weight:800;
+  line-height:1.25;margin-bottom:12px;
+}
+.highlight-left p{
+  font-size:.92rem;opacity:.88;
+  line-height:1.65;margin-bottom:24px;
+}
+.highlight-btn{
+  background:#fff;color:#C62828;
+  border:none;padding:13px 28px;
+  border-radius:10px;font-family:'Poppins',sans-serif;
+  font-size:.9rem;font-weight:700;
+  cursor:pointer;transition:.2s;
+}
+.highlight-btn:hover{background:#fff8e1;transform:translateY(-1px)}
+
+.highlight-right{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:14px;flex-shrink:0;
+}
+.hl-item{
+  background:rgba(255,255,255,.15);
+  border-radius:12px;padding:16px 18px;
+  backdrop-filter:blur(4px);
+}
+.hl-num{
+  font-family:'Poppins',sans-serif;
+  font-size:1.5rem;font-weight:900;
+  color:#FBC02D;display:block;margin-bottom:2px;
+}
+.hl-label{font-size:.78rem;opacity:.85}
+
+/* ── HOW IT WORKS ───────────────────────────────────────── */
+.how{background:#fff;padding:96px 48px}
+.how-inner{max-width:1100px;margin:0 auto}
+
+/* Steps */
+.steps{display:flex;flex-direction:column;gap:0;margin-bottom:64px}
+
+.step{
+  display:grid;
+  grid-template-columns:80px 1fr 340px;
+  gap:0 40px;
+  padding:48px 0;
+  border-bottom:1px solid #E0E0E0;
+  align-items:start;
+}
+.step:last-child{border-bottom:none}
+
+/* Coluna esquerda: número + linha */
+.step-left{display:flex;flex-direction:column;align-items:center;padding-top:4px}
+.step-num{
+  font-family:'Poppins',sans-serif;
+  font-size:2.4rem;font-weight:900;
+  color:#C62828;line-height:1;
+  width:64px;height:64px;
+  background:#ffebee;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.step-line{width:2px;flex:1;min-height:40px;background:#F5F5F5;margin-top:12px}
+
+/* Coluna central: texto */
+.step-body{padding-top:8px}
+.step-tag{
+  font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:#9e9e9e;margin-bottom:10px;
+}
+.step-title{
+  font-family:'Poppins',sans-serif;
+  font-size:1.15rem;font-weight:700;
+  color:#333333;line-height:1.35;
+  margin-bottom:10px;
+}
+.step-desc{font-size:.9rem;color:#555555;line-height:1.7;margin-bottom:14px}
+.step-detail{display:flex;flex-wrap:wrap;gap:8px}
+.step-detail span{
+  font-size:.75rem;font-weight:600;color:#2e7d32;
+  background:#e8f5e9;padding:4px 10px;border-radius:20px;
+}
+
+/* Coluna direita: visual */
+.step-visual{display:flex;align-items:flex-start;padding-top:4px}
+.sv-card{
+  background:#F5F5F5;border-radius:14px;
+  padding:18px 20px;width:100%;
+  border:1.5px solid #E0E0E0;
+  font-size:.84rem;
+}
+
+/* Visual 1 — Login */
+.sv-label{font-size:.7rem;font-weight:700;color:#9e9e9e;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.sv-input{
+  background:#fff;border:2px solid #C62828;
+  border-radius:8px;padding:10px 14px;
+  font-size:.9rem;font-weight:500;color:#333333;
+  margin-bottom:10px;
+}
+.sv-cursor{animation:blink 1s step-end infinite;color:#C62828}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.sv-btn{
+  background:#C62828;color:#fff;
+  border-radius:8px;padding:10px 14px;
+  font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;
+  text-align:center;
+}
+
+/* Visual 2 — Trilha */
+.sv-trail-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #E0E0E0}
+.sv-trail-item:last-child{border-bottom:none}
+.sv-trail-item.done{opacity:.7}
+.sv-trail-num{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0}
+.done-n{background:#dcfce7;color:#2e7d32}
+.active-n{background:#ffebee;color:#C62828}
+.locked-n{background:#F5F5F5;color:#9e9e9e}
+.sv-trail-title{font-size:.82rem;font-weight:600;color:#333333}
+.sv-trail-meta{font-size:.7rem;color:#9e9e9e;margin-top:1px}
+
+/* Visual 3 — Exercício */
+.sv-question{font-size:.88rem;font-weight:600;color:#333333;margin-bottom:10px;line-height:1.4}
+.sv-opt{font-size:.82rem;font-weight:600;padding:8px 12px;border-radius:8px;margin-bottom:6px}
+.sv-opt.correct{background:#dcfce7;color:#2e7d32}
+.sv-opt.wrong{background:#fee2e2;color:#b71c1c;text-decoration:line-through;opacity:.7}
+.sv-feedback{font-size:.78rem;font-weight:700;color:#2e7d32;background:#e8f5e9;padding:7px 11px;border-radius:8px;margin-top:8px}
+
+/* Visual 4 — Níveis */
+.sv-levels{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:14px}
+.sv-lv{
+  background:#fff;border:1.5px solid #E0E0E0;
+  border-radius:8px;padding:8px 4px;
+  text-align:center;font-size:.72rem;font-weight:700;color:#9e9e9e;
+}
+.sv-lv span{display:block;font-size:.65rem;margin-top:2px}
+.done-lv{background:#dcfce7;border-color:#86efac;color:#2e7d32}
+.active-lv{background:#ffebee;border-color:#C62828;color:#C62828}
+.lock-lv{opacity:.5}
+.sv-prog-bar{height:7px;background:#E0E0E0;border-radius:5px;overflow:hidden;margin-bottom:7px}
+.sv-prog-fill{height:100%;width:28%;background:linear-gradient(90deg,#C62828,#FBC02D);border-radius:5px}
+.sv-prog-label{font-size:.72rem;color:#9e9e9e;font-weight:500}
+
+/* CTA final */
+.how-cta{
+  text-align:center;
+  background:#F5F5F5;border-radius:20px;
+  padding:48px;
+}
+.how-cta p{font-size:1.05rem;color:#555555;margin-bottom:24px;font-weight:500}
+
+/* ── SOCIAL PROOF ───────────────────────────────────────── */
+.proof{background:var(--white);padding:96px 48px}
+.proof-inner{max-width:1100px;margin:0 auto}
+
+/* Números de impacto */
+.proof-numbers{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:#E0E0E0;
+  border-radius:16px;overflow:hidden;
+  margin-bottom:64px;
+}
+.pn-item{
+  background:#fff;padding:32px 24px;text-align:center;
+}
+.pn-num{
+  font-family:'Poppins',sans-serif;
+  font-size:2.4rem;font-weight:900;
+  color:#C62828;display:block;line-height:1;margin-bottom:6px;
+}
+.pn-label{font-size:.82rem;color:#757575;line-height:1.4}
+
+/* Depoimento em destaque */
+.featured-review{
+  background:linear-gradient(135deg,#C62828,#e53935);
+  border-radius:20px;padding:40px 48px;
+  display:grid;grid-template-columns:1fr auto;
+  gap:32px;align-items:center;
+  margin-bottom:24px;color:#fff;
+  position:relative;overflow:hidden;
+}
+.featured-review::before{
+  content:'"';
+  position:absolute;top:-20px;left:32px;
+  font-size:12rem;font-family:'Poppins',sans-serif;font-weight:900;
+  color:rgba(255,255,255,.08);line-height:1;
+  pointer-events:none;
+}
+.fr-quote{
+  font-size:1.15rem;line-height:1.7;
+  font-weight:500;margin-bottom:20px;
+  position:relative;z-index:1;
+}
+.fr-author{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.fr-avatar{
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:800;
+  flex-shrink:0;border:2px solid rgba(255,255,255,.4);
+}
+.fr-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem}
+.fr-meta{font-size:.78rem;opacity:.8;margin-top:2px}
+.fr-result{
+  background:rgba(255,255,255,.15);border-radius:14px;
+  padding:20px 24px;text-align:center;flex-shrink:0;
+  backdrop-filter:blur(4px);min-width:140px;
+}
+.fr-result-num{
+  font-family:'Poppins',sans-serif;
+  font-size:2rem;font-weight:900;
+  color:#FBC02D;display:block;line-height:1;margin-bottom:4px;
+}
+.fr-result-label{font-size:.75rem;opacity:.85;line-height:1.4}
+
+/* Grid de depoimentos */
+.reviews-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;margin-bottom:48px;
+}
+.review-card{
+  background:#fff;border-radius:16px;
+  padding:24px;border:1.5px solid #E0E0E0;
+  transition:.2s;position:relative;
+}
+.review-card:hover{border-color:#C62828;box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+.rc-stars{color:#FBC02D;font-size:.9rem;margin-bottom:12px;letter-spacing:2px}
+.rc-text{
+  font-size:.88rem;color:#444444;
+  line-height:1.7;margin-bottom:16px;
+  font-style:italic;
+}
+.rc-text strong{font-style:normal;color:#C62828}
+.rc-author{display:flex;align-items:center;gap:10px}
+.rc-avatar{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',sans-serif;font-size:.75rem;font-weight:800;
+  color:#fff;flex-shrink:0;
+}
+.rc-name{font-size:.85rem;font-weight:700;color:#333333}
+.rc-detail{font-size:.74rem;color:#9e9e9e;margin-top:1px}
+.rc-badge{
+  position:absolute;top:18px;right:18px;
+  font-size:.65rem;font-weight:700;padding:3px 9px;
+  border-radius:20px;letter-spacing:.03em;
+}
+
+/* Barra de logos / confiança */
+.proof-trust{
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;flex-wrap:wrap;
+  padding:28px;background:#fff;border-radius:14px;
+  border:1.5px solid #E0E0E0;
+}
+.trust-label{font-size:.78rem;color:#9e9e9e;font-weight:600;margin-right:8px}
+.trust-chip{
+  display:flex;align-items:center;gap:6px;
+  background:#F5F5F5;border-radius:20px;
+  padding:7px 14px;font-size:.78rem;font-weight:600;color:#444444;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:900px){
+  .nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:40px;padding:100px 24px 64px;text-align:center}
+  .hero-title{font-size:2.2rem}
+  .hero-sub{max-width:100%;margin-left:auto;margin-right:auto}
+  .hero-cta{width:100%;justify-content:center}
+  .hero-note{justify-content:center}
+  .hero-right{display:none}
+  .hero-stats{grid-template-columns:1fr}
+  .benefits{padding:64px 24px}
+  .benefits-grid{grid-template-columns:1fr}
+  .section-title{font-size:1.7rem}
+  .benefits-highlight{padding:32px 24px;gap:28px}
+  .highlight-right{grid-template-columns:1fr 1fr}
+  .how{padding:64px 24px}
+  .step{grid-template-columns:56px 1fr;grid-template-rows:auto auto}
+  .step-visual{grid-column:2;margin-top:20px}
+  .step-num{font-size:1.6rem;width:48px;height:48px;border-radius:12px}
+  .how-cta{padding:32px 20px}
+  .sv-levels{grid-template-columns:repeat(3,1fr)}
+  .proof{padding:64px 24px}
+  .proof-numbers{grid-template-columns:repeat(2,1fr)}
+  .featured-review{grid-template-columns:1fr;text-align:center}
+  .fr-author{justify-content:center}
+  .fr-result{min-width:auto}
+  .reviews-grid{grid-template-columns:1fr}
+  .stat-item{border-right:none;border-bottom:1px solid #E0E0E0;padding:16px 0}
+  .stat-item:last-child{border-bottom:none}
+}
+@media(max-width:480px){
+  .hero-title{font-size:2rem}
+  .btn-primary,.btn-secondary{width:100%;justify-content:center}
+  .eyebrow{font-size:.7rem}
+}
+
+/* ── EXPERIÊNCIA DO ALUNO ───────────────────────── */
+.exp{background:var(--bg);padding:96px 48px}
+.exp-inner{max-width:1140px;margin:0 auto}
+
+.exp-header{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:end;
+  margin-bottom:64px;
+}
+.exp-header-right{
+  font-size:.97rem;color:var(--muted);line-height:1.8;
+  border-left:3px solid var(--yellow);padding-left:20px;
+}
+
+/* Grid principal 2×2 */
+.exp-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+/* Card base */
+.exp-card{
+  background:var(--white);
+  border-radius:20px;
+  border:1.5px solid var(--border);
+  overflow:hidden;
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+}
+.exp-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(0,0,0,.09);
+  border-color:transparent;
+}
+
+/* Topo colorido do card */
+.ec-top{
+  padding:28px 28px 24px;
+  position:relative;overflow:hidden;
+}
+.ec-top::after{
+  content:'';
+  position:absolute;
+  width:200px;height:200px;
+  border-radius:50%;
+  right:-60px;top:-60px;
+  background:rgba(255,255,255,.12);
+  pointer-events:none;
+}
+.ec-top--red{background:linear-gradient(135deg,#C62828,#e53935)}
+.ec-top--dark{background:linear-gradient(135deg,#1a1a1a,#2d2d2d)}
+.ec-top--yellow{background:linear-gradient(135deg,#F57F17,#FBC02D)}
+.ec-top--wine{background:linear-gradient(135deg,#6d1b1b,#C62828)}
+
+.ec-num{
+  font-family:'Poppins',sans-serif;
+  font-size:.72rem;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;
+  opacity:.55;color:#fff;margin-bottom:16px;
+}
+.ec-icon{font-size:2rem;margin-bottom:10px;display:block}
+.ec-title{
+  font-family:'Poppins',sans-serif;
+  font-size:1.3rem;font-weight:800;
+  color:#fff;line-height:1.2;margin-bottom:6px;
+}
+.ec-subtitle{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.5}
+
+/* Corpo do card */
+.ec-body{padding:24px 28px 28px}
+
+.ec-desc{
+  font-size:.92rem;color:#555;line-height:1.75;
+  margin-bottom:20px;
+}
+
+/* Itens de feature dentro do card */
+.ec-features{display:flex;flex-direction:column;gap:10px}
+.ec-feature{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.85rem;color:var(--text);
+  line-height:1.5;
+}
+.ec-feature-dot{
+  width:20px;height:20px;border-radius:50%;
+  flex-shrink:0;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;font-weight:900;color:#fff;
+}
+.efd-red{background:var(--red)}
+.efd-dark{background:#333}
+.efd-yellow{background:var(--yellow-dk)}
+.efd-wine{background:#6d1b1b}
+
+/* Preview visual dentro do card */
+.ec-preview{
+  margin-top:20px;
+  background:var(--bg);
+  border-radius:12px;
+  border:1.5px solid var(--border);
+  padding:16px;
+}
+.ep-label{
+  font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--muted);margin-bottom:10px;
+}
+
+/* Preview de aula */
+.ep-lesson-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 10px;border-radius:8px;margin-bottom:4px;
+  font-size:.82rem;
+}
+.ep-lesson-item:last-child{margin-bottom:0}
+.ep-lesson-item.active{background:var(--red-light);color:var(--red)}
+.ep-lesson-item.done{color:#888}
+.ep-lesson-num{
+  width:24px;height:24px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.68rem;font-weight:800;flex-shrink:0;
+}
+.epn-done{background:#e8f5e9;color:#2e7d32}
+.epn-active{background:var(--red);color:#fff}
+.epn-lock{background:var(--border);color:#aaa}
+.ep-lesson-name{flex:1;font-weight:500}
+
+/* Preview de apostila */
+.ep-apostila{display:flex;flex-direction:column;gap:6px}
+.ep-ap-row{
+  display:flex;align-items:center;gap:8px;
+  font-size:.8rem;color:#555;
+  padding:6px 8px;border-radius:6px;
+  background:var(--white);border:1px solid var(--border);
+}
+.ep-ap-icon{font-size:.9rem}
+.ep-ap-name{flex:1;font-weight:500}
+.ep-ap-tag{
+  font-size:.65rem;font-weight:700;padding:2px 8px;
+  border-radius:100px;
+}
+.ept-pdf{background:#ffebee;color:var(--red)}
+.ept-novo{background:#fff8e1;color:var(--yellow-dk)}
+
+/* Preview de atividades */
+.ep-quiz{background:var(--white);border-radius:10px;border:1px solid var(--border);padding:12px}
+.ep-question{font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.4}
+.ep-opt{
+  font-size:.78rem;padding:7px 10px;border-radius:7px;
+  margin-bottom:5px;cursor:pointer;font-weight:500;
+}
+.ep-opt:last-child{margin-bottom:0}
+.ep-opt.ep-correct{background:#e8f5e9;color:#2e7d32;border:1.5px solid #a5d6a7}
+.ep-opt.ep-wrong{background:#ffebee;color:var(--red);border:1.5px solid #ffcdd2;text-decoration:line-through;opacity:.7}
+.ep-opt.ep-neutral{background:var(--bg);color:#555;border:1.5px solid var(--border)}
+.ep-feedback{
+  margin-top:8px;padding:7px 10px;border-radius:7px;
+  font-size:.75rem;font-weight:700;
+  background:#e8f5e9;color:#2e7d32;
+}
+
+/* Preview de professor */
+.ep-chat{display:flex;flex-direction:column;gap:8px}
+.ep-msg{
+  display:flex;gap:8px;align-items:flex-end;
+}
+.ep-msg.ep-msg-teacher{flex-direction:row}
+.ep-msg.ep-msg-student{flex-direction:row-reverse}
+.ep-avatar-sm{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;font-weight:800;color:#fff;
+}
+.ep-bubble{
+  max-width:78%;
+  padding:8px 12px;border-radius:12px;
+  font-size:.78rem;line-height:1.5;
+}
+.ep-bubble-teacher{
+  background:var(--white);border:1.5px solid var(--border);
+  color:var(--text);border-bottom-left-radius:4px;
+}
+.ep-bubble-student{
+  background:var(--red);color:#fff;
+  border-bottom-right-radius:4px;
+}
+.ep-time{font-size:.65rem;color:#bbb;flex-shrink:0;padding-bottom:4px}
+
+/* Selo final */
+.exp-seal{
+  margin-top:52px;
+  background:linear-gradient(135deg,#1a0a0a,#2d0b0b);
+  border-radius:20px;
+  padding:36px 48px;
+  display:flex;align-items:center;gap:48px;
+  flex-wrap:wrap;
+}
+.es-text h3{
+  font-family:'Poppins',sans-serif;
+  font-size:1.25rem;font-weight:800;color:#fff;
+  margin-bottom:6px;
+}
+.es-text p{font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.6;max-width:420px}
+.es-chips{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.es-chip{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:100px;
+  padding:8px 18px;
+  font-size:.8rem;font-weight:600;color:rgba(255,255,255,.8);
+  display:flex;align-items:center;gap:6px;
+}
+.es-chip-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow)}
+
+@media(max-width:900px){
+  .exp{padding:72px 24px}
+  .exp-header{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr}
+}
+
+/* ── MAESTRO GABRIEL ────────────────────────────── */
+.maestro{background:var(--white);padding:96px 48px}
+.maestro-inner{
+  max-width:1140px;margin:0 auto;
+  display:grid;
+  grid-template-columns:420px 1fr;
+  gap:72px;
+  align-items:start;
+}
+
+/* ── Coluna esquerda: cartão do professor ── */
+.maestro-card{
+  position:sticky;top:84px;
+}
+.mc-profile{
+  background:linear-gradient(160deg,#1a0a0a 0%,#2d0b0b 55%,#420d0d 100%);
+  border-radius:24px;
+  padding:40px 36px 36px;
+  position:relative;overflow:hidden;
+  margin-bottom:16px;
+}
+.mc-profile::before{
+  content:'';position:absolute;
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(198,40,40,.25) 0%,transparent 70%);
+  top:-100px;right:-100px;pointer-events:none;
+}
+.mc-profile::after{
+  content:'G';
+  position:absolute;
+  font-family:'Poppins',sans-serif;font-weight:900;
+  font-size:18rem;line-height:1;
+  color:rgba(255,255,255,.03);
+  bottom:-60px;right:-30px;
+  pointer-events:none;letter-spacing:-.05em;
+}
+
+.mc-avatar{
+  width:96px;height:96px;border-radius:22px;
+  background:linear-gradient(135deg,#C62828,#e53935);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',sans-serif;font-size:2.2rem;font-weight:900;color:#fff;
+  margin-bottom:24px;position:relative;z-index:1;
+  box-shadow:0 8px 28px rgba(198,40,40,.4);
+}
+
+.mc-tag{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(251,192,45,.7);margin-bottom:8px;position:relative;z-index:1;
+}
+.mc-name{
+  font-family:'Poppins',sans-serif;
+  font-size:1.7rem;font-weight:900;
+  color:#fff;line-height:1.1;
+  margin-bottom:4px;position:relative;z-index:1;
+}
+.mc-role{
+  font-size:.88rem;color:rgba(255,255,255,.55);
+  margin-bottom:28px;position:relative;z-index:1;
+}
+
+.mc-divider{
+  height:1px;background:rgba(255,255,255,.08);
+  margin-bottom:24px;position:relative;z-index:1;
+}
+
+.mc-stats{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:14px;position:relative;z-index:1;
+}
+.mc-stat{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:14px 16px;
+}
+.mc-stat-num{
+  font-family:'Poppins',sans-serif;
+  font-size:1.5rem;font-weight:900;
+  color:var(--yellow);display:block;line-height:1;margin-bottom:4px;
+}
+.mc-stat-label{font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.3}
+
+/* Credenciais */
+.mc-creds{
+  background:var(--bg);border-radius:16px;
+  border:1.5px solid var(--border);
+  padding:20px 24px;
+}
+.mc-cred{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 0;border-bottom:1px solid var(--border);
+  font-size:.875rem;
+}
+.mc-cred:last-child{border-bottom:none;padding-bottom:0}
+.mc-cred:first-child{padding-top:0}
+.mc-cred-icon{
+  width:34px;height:34px;border-radius:10px;flex-shrink:0;
+  background:var(--red-light);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.mc-cred-text{color:var(--text);font-weight:500}
+
+/* ── Coluna direita: conteúdo ── */
+.maestro-content{}
+
+.maestro-intro{
+  font-size:1.05rem;color:#555;line-height:1.85;
+  margin-bottom:40px;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--border);
+}
+.maestro-intro strong{color:var(--text);font-weight:700}
+
+/* Citação do professor */
+.maestro-quote{
+  position:relative;
+  padding:28px 32px 28px 36px;
+  background:var(--red-light);
+  border-left:4px solid var(--red);
+  border-radius:0 16px 16px 0;
+  margin-bottom:40px;
+}
+.maestro-quote p{
+  font-size:1.1rem;line-height:1.75;
+  color:#444;font-style:italic;margin-bottom:12px;
+}
+.maestro-quote cite{
+  font-size:.82rem;font-weight:700;
+  color:var(--red);font-style:normal;
+  letter-spacing:.02em;
+}
+
+/* Método de ensino */
+.maestro-method{margin-bottom:40px}
+.mm-title{
+  font-family:'Poppins',sans-serif;
+  font-size:1rem;font-weight:800;
+  color:var(--text);margin-bottom:20px;
+  text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;
+}
+.mm-steps{display:flex;flex-direction:column;gap:0}
+.mm-step{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:0 20px;
+  padding:20px 0;
+  border-bottom:1px solid var(--border);
+  align-items:start;
+}
+.mm-step:last-child{border-bottom:none;padding-bottom:0}
+.mm-step-num{
+  width:40px;height:40px;border-radius:12px;
+  background:var(--red-light);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:900;
+  color:var(--red);flex-shrink:0;
+  margin-top:2px;
+}
+.mm-step-body h4{
+  font-family:'Poppins',sans-serif;
+  font-size:.95rem;font-weight:700;
+  color:var(--text);margin-bottom:4px;
+}
+.mm-step-body p{font-size:.86rem;color:#666;line-height:1.6}
+
+/* Frase de encerramento */
+.maestro-closing{
+  background:linear-gradient(135deg,#1a0a0a,#2d0b0b);
+  border-radius:18px;
+  padding:28px 32px;
+  display:flex;align-items:center;gap:20px;
+}
+.mc-closing-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:rgba(198,40,40,.3);border:1.5px solid rgba(198,40,40,.4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;flex-shrink:0;
+}
+.mc-closing-text p{
+  font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.65;
+}
+.mc-closing-text strong{color:#fff}
+
+@media(max-width:960px){
+  .maestro{padding:72px 24px}
+  .maestro-inner{grid-template-columns:1fr;gap:40px}
+  .maestro-card{position:static}
+  .mc-stats{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:600px){
+  .mc-stats{grid-template-columns:1fr 1fr}
+}
+
+/* ── COMO USAR (alunos) ─────────────────────────── */
+.howuse{background:var(--bg);padding:96px 48px}
+.howuse-inner{max-width:1100px;margin:0 auto}
+
+.howuse-header{text-align:center;max-width:600px;margin:0 auto 72px}
+
+/* Linha conectora entre passos */
+.howuse-steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  position:relative;
+  margin-bottom:64px;
+}
+.howuse-steps::before{
+  content:'';
+  position:absolute;
+  top:52px;left:calc(16.66% + 24px);right:calc(16.66% + 24px);
+  height:2px;
+  background:linear-gradient(90deg,var(--red),var(--yellow),var(--red));
+  opacity:.25;
+  z-index:0;
+}
+
+/* Card de passo */
+.hu-step{
+  padding:0 24px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  position:relative;z-index:1;
+}
+.hu-step:first-child{padding-left:0}
+.hu-step:last-child{padding-right:0}
+
+/* Ícone do passo */
+.hu-icon-wrap{
+  width:104px;height:104px;
+  border-radius:28px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:28px;
+  position:relative;
+  flex-shrink:0;
+}
+.hu-icon-wrap::before{
+  content:attr(data-num);
+  position:absolute;
+  top:-10px;right:-10px;
+  width:26px;height:26px;border-radius:50%;
+  background:var(--red);color:#fff;
+  font-family:'Poppins',sans-serif;font-size:.68rem;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(198,40,40,.4);
+}
+.hu-icon-wrap--red{background:linear-gradient(135deg,#C62828,#e53935)}
+.hu-icon-wrap--dark{background:linear-gradient(135deg,#1a1a1a,#333)}
+.hu-icon-wrap--yellow{background:linear-gradient(135deg,#F57F17,#FBC02D)}
+.hu-icon{font-size:2.6rem}
+
+.hu-step h3{
+  font-family:'Poppins',sans-serif;
+  font-size:1.05rem;font-weight:800;
+  color:var(--text);margin-bottom:10px;line-height:1.3;
+}
+.hu-step p{
+  font-size:.9rem;color:#666;line-height:1.75;
+  margin-bottom:20px;max-width:280px;
+}
+
+/* Itens de detalhe */
+.hu-details{
+  display:flex;flex-direction:column;gap:7px;
+  width:100%;
+}
+.hu-detail{
+  display:flex;align-items:center;gap:8px;
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:10px;padding:9px 14px;
+  font-size:.82rem;color:var(--text);font-weight:500;
+  transition:border-color .2s;
+}
+.hu-detail:hover{border-color:var(--red)}
+.hu-detail-icon{font-size:.9rem;flex-shrink:0}
+
+/* Bloco de transição entre passos */
+.hu-arrow{
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:rgba(198,40,40,.3);
+  margin-top:52px;
+}
+
+/* Painel de fluxo visual */
+.howuse-flow{
+  background:var(--white);
+  border-radius:24px;
+  border:1.5px solid var(--border);
+  padding:40px 48px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:0;
+  align-items:center;
+}
+.hf-block{text-align:center;padding:0 24px}
+.hf-num{
+  width:44px;height:44px;border-radius:12px;
+  font-family:'Poppins',sans-serif;font-size:1rem;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 12px;
+}
+.hf-num--red{background:var(--red-light);color:var(--red)}
+.hf-num--dark{background:#f0f0f0;color:#333}
+.hf-num--yellow{background:var(--yellow-lt);color:var(--yellow-dk)}
+.hf-label{
+  font-family:'Poppins',sans-serif;
+  font-size:.82rem;font-weight:700;color:var(--text);
+  margin-bottom:4px;
+}
+.hf-sub{font-size:.76rem;color:var(--muted)}
+.hf-arrow{
+  font-size:1.1rem;color:var(--border);
+  padding:0 8px;
+}
+
+/* Nota final */
+.howuse-note{
+  margin-top:40px;
+  text-align:center;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-size:.875rem;color:var(--muted);
+}
+.howuse-note span{
+  display:inline-flex;align-items:center;gap:6px;
+}
+.howuse-note-dot{color:var(--border)}
+
+@media(max-width:900px){
+  .howuse{padding:72px 24px}
+  .howuse-steps{grid-template-columns:1fr;gap:48px}
+  .howuse-steps::before{display:none}
+  .hu-step{padding:0}
+  .howuse-flow{grid-template-columns:1fr;gap:20px;padding:28px 24px}
+  .hf-arrow{transform:rotate(90deg)}
+}
+
+/* ── SOBRE A PLATAFORMA ─────────────────────────── */
+.about{background:var(--white);padding:96px 48px}
+.about-inner{max-width:1100px;margin:0 auto}
+
+.about-header{text-align:center;max-width:680px;margin:0 auto 64px}
+.about-lead{
+  font-size:1.08rem;line-height:1.8;
+  color:#555;margin-top:16px;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  margin-bottom:72px;
+}
+.about-card{
+  background:#F5F5F5;
+  border-radius:16px;
+  padding:28px 24px;
+  border:1.5px solid #E0E0E0;
+  transition:transform .2s,box-shadow .2s;
+}
+.about-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.08)}
+.about-card--red{
+  background:#fff0f0;
+  border-color:#f5c6c6;
+}
+.about-icon{font-size:1.8rem;margin-bottom:14px}
+.about-card h3{
+  font-family:'Poppins',sans-serif;
+  font-size:.95rem;font-weight:700;
+  color:#222;margin-bottom:8px;line-height:1.3;
+}
+.about-card p{font-size:.88rem;line-height:1.7;color:#666}
+
+/* Proposta central */
+.about-proposition{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  align-items:center;
+  background:#F5F5F5;
+  border-radius:24px;
+  padding:48px 52px;
+  border:1.5px solid #E0E0E0;
+}
+.prop-text h3{
+  font-family:'Poppins',sans-serif;
+  font-size:1.4rem;font-weight:800;
+  color:#C62828;margin-bottom:14px;
+}
+.prop-text p{font-size:.97rem;line-height:1.8;color:#555;margin-bottom:24px}
+.prop-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.prop-list li{display:flex;align-items:center;gap:10px;font-size:.92rem;color:#333}
+.prop-check{
+  flex-shrink:0;
+  width:22px;height:22px;border-radius:50%;
+  background:#C62828;color:#fff;
+  font-size:.7rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.prop-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#C62828;color:#fff;
+  font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;
+  padding:13px 28px;border-radius:100px;
+  text-decoration:none;
+  transition:background .2s,transform .2s;
+}
+.prop-cta:hover{background:#b71c1c;transform:translateY(-1px)}
+
+/* Mini card de progresso */
+.prop-visual{display:flex;align-items:center;justify-content:center}
+.prop-card{
+  background:#fff;border-radius:20px;
+  box-shadow:0 4px 32px rgba(0,0,0,.10);
+  padding:24px;width:100%;max-width:320px;
+}
+.pc-header{
+  display:flex;align-items:center;gap:6px;
+  margin-bottom:20px;
+  font-size:.75rem;font-weight:600;color:#aaa;
+}
+.pc-dot{width:10px;height:10px;border-radius:50%}
+.pc-header span{margin-left:4px}
+.pc-level{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.pc-badge{
+  background:#C62828;color:#fff;
+  font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.pc-label{font-size:.72rem;color:#aaa;margin-bottom:6px}
+.pc-bar-wrap{background:#eee;border-radius:100px;height:6px;margin-bottom:4px}
+.pc-bar{height:6px;border-radius:100px;background:linear-gradient(90deg,#C62828,#e53935)}
+.pc-pct{font-size:.72rem;color:#888}
+.pc-skills{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.pc-skill{display:flex;align-items:center;gap:10px;font-size:.78rem;color:#555}
+.pc-skill span{width:76px;flex-shrink:0}
+.pcs-bar{flex:1;background:#eee;border-radius:100px;height:5px}
+.pcs-bar div{height:5px;border-radius:100px}
+.pc-next{
+  border-top:1px solid #f0f0f0;padding-top:14px;
+  display:flex;flex-direction:column;gap:4px;
+}
+.pc-next-label{font-size:.72rem;color:#aaa}
+.pc-next-module{font-size:.82rem;font-weight:600;color:#333}
+
+@media(max-width:900px){
+  .about-grid{grid-template-columns:repeat(2,1fr)}
+  .about-proposition{grid-template-columns:1fr;padding:36px 28px;gap:36px}
+  .prop-visual{display:none}
+}
+@media(max-width:560px){
+  .about-grid{grid-template-columns:1fr}
+  .about{padding:64px 16px}
+}
+
+/* ── ACESSO DOS ALUNOS ──────────────────────────── */
+.access{
+  background:#0d0d0d;
+  padding:120px 48px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* Grade decorativa de fundo */
+.access::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:56px 56px;
+  pointer-events:none;
+}
+
+/* Brilho central */
+.access::after{
+  content:'';
+  position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(198,40,40,.12) 0%,transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+
+.access-inner{
+  position:relative;z-index:1;
+  max-width:560px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;
+}
+
+/* Selo de exclusividade */
+.access-seal{
+  display:flex;flex-direction:column;align-items:center;
+  margin-bottom:48px;
+}
+.access-seal-ring{
+  width:100px;height:100px;border-radius:50%;
+  border:1.5px solid rgba(198,40,40,.35);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:0;
+  position:relative;
+}
+.access-seal-ring::before{
+  content:'';
+  position:absolute;inset:-8px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.06);
+}
+.access-seal-ring::after{
+  content:'';
+  position:absolute;inset:-16px;border-radius:50%;
+  border:1px dashed rgba(255,255,255,.04);
+}
+.access-seal-logo{
+  font-family:'Poppins',sans-serif;
+  font-size:1.6rem;font-weight:900;
+  color:var(--red);letter-spacing:-.02em;
+}
+
+/* Linha ornamental */
+.access-ornament{
+  display:flex;align-items:center;gap:14px;
+  margin:28px 0 36px;width:100%;
+}
+.access-ornament-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
+}
+.access-ornament-icon{
+  font-size:.75rem;color:rgba(251,192,45,.5);
+  letter-spacing:.15em;font-weight:700;text-transform:uppercase;
+  font-family:'Poppins',sans-serif;
+}
+
+/* Tag restrita */
+.access-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(198,40,40,.1);
+  border:1px solid rgba(198,40,40,.25);
+  border-radius:100px;
+  padding:6px 16px;
+  margin-bottom:28px;
+}
+.access-tag-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--red);
+  box-shadow:0 0 6px rgba(198,40,40,.6);
+}
+.access-tag span{
+  font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(198,40,40,.8);
+}
+
+/* Título */
+.access-title{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:900;
+  color:#fff;
+  line-height:1.15;
+  margin-bottom:16px;
+  letter-spacing:-.02em;
+}
+.access-title span{
+  background:linear-gradient(90deg,#C62828,#FBC02D);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* Subtítulo */
+.access-sub{
+  font-size:.97rem;
+  color:rgba(255,255,255,.45);
+  line-height:1.75;
+  margin-bottom:48px;
+  max-width:420px;
+}
+
+/* Botão de login */
+.access-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--white);
+  color:var(--red);
+  font-family:'Poppins',sans-serif;
+  font-size:1rem;font-weight:800;
+  padding:18px 44px;border-radius:100px;
+  text-decoration:none;
+  border:none;cursor:pointer;
+  box-shadow:0 0 0 1px rgba(255,255,255,.1),0 16px 48px rgba(0,0,0,.4);
+  transition:transform .25s,box-shadow .25s,background .2s;
+  letter-spacing:.01em;
+  margin-bottom:20px;
+}
+.access-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.15),0 24px 56px rgba(0,0,0,.5);
+  background:#fff8f8;
+}
+.access-btn-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--red);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:#fff;
+  transition:transform .2s;
+}
+.access-btn:hover .access-btn-icon{transform:translateX(3px)}
+
+/* Nota de rodapé */
+.access-footnote{
+  font-size:.78rem;
+  color:rgba(255,255,255,.22);
+  display:flex;align-items:center;gap:8px;
+  letter-spacing:.02em;
+}
+.access-footnote::before{content:'🔒';font-size:.75rem;opacity:.6}
+
+@media(max-width:600px){
+  .access{padding:88px 24px}
+  .access-btn{width:100%;justify-content:center}
+}
+
+/* ── CTA FINAL ─────────────────────────────────── */
+@keyframes pulse-ring{
+  0%{transform:scale(.95);box-shadow:0 0 0 0 rgba(255,255,255,.4)}
+  70%{transform:scale(1);box-shadow:0 0 0 14px rgba(255,255,255,0)}
+  100%{transform:scale(.95);box-shadow:0 0 0 0 rgba(255,255,255,0)}
+}
+@keyframes drift{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  33%{transform:translateY(-18px) rotate(1.5deg)}
+  66%{transform:translateY(10px) rotate(-1deg)}
+}
+@keyframes ticker{
+  0%{opacity:1}50%{opacity:.4}100%{opacity:1}
+}
+
+.cta-final{
+  position:relative;
+  overflow:hidden;
+  background:#0f0f0f;
+  padding:110px 24px 100px;
+  text-align:center;
+  color:#fff;
+}
+
+/* Fundo com textura de grade */
+.cta-final::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(198,40,40,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(198,40,40,.12) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+}
+
+/* Blobs de fundo */
+.cta-blob{
+  position:absolute;border-radius:50%;
+  filter:blur(120px);pointer-events:none;
+}
+.cta-blob-1{width:560px;height:560px;background:#C62828;opacity:.22;top:-160px;left:-120px;animation:drift 12s ease-in-out infinite}
+.cta-blob-2{width:400px;height:400px;background:#FBC02D;opacity:.14;bottom:-140px;right:-100px;animation:drift 16s ease-in-out infinite reverse}
+.cta-blob-3{width:280px;height:280px;background:#C62828;opacity:.1;top:50%;right:10%;transform:translateY(-50%)}
+
+.cta-inner{position:relative;z-index:1;max-width:660px;margin:0 auto}
+
+/* Indicador de urgência */
+.cta-urgency{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(251,192,45,.12);
+  border:1px solid rgba(251,192,45,.35);
+  border-radius:100px;
+  padding:7px 18px;
+  margin-bottom:32px;
+}
+.urgency-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#FBC02D;
+  animation:ticker 1.4s ease-in-out infinite;
+}
+.urgency-text{
+  font-family:'Poppins',sans-serif;
+  font-size:.75rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:#FBC02D;
+}
+
+/* Título principal */
+.cta-title{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(2.2rem,5.5vw,3.4rem);
+  font-weight:900;line-height:1.1;
+  color:#fff;
+  margin-bottom:24px;
+  letter-spacing:-.02em;
+}
+.cta-title em{
+  font-style:normal;
+  background:linear-gradient(90deg,#FBC02D,#F57F17);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* Subtítulo */
+.cta-sub{
+  font-size:1.1rem;line-height:1.75;
+  color:rgba(255,255,255,.72);
+  max-width:500px;margin:0 auto 48px;
+}
+
+/* Botão principal com efeito pulse */
+.cta-btn-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:20px;margin-bottom:44px;
+}
+.cta-btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#C62828;color:#fff;
+  font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;
+  padding:18px 44px;border-radius:100px;
+  text-decoration:none;
+  animation:pulse-ring 2.4s ease-in-out infinite;
+  transition:background .2s,transform .2s;
+  letter-spacing:.01em;
+}
+.cta-btn-primary:hover{
+  background:#b71c1c;
+  transform:scale(1.04);
+  animation:none;
+  box-shadow:0 12px 40px rgba(198,40,40,.5);
+}
+.cta-btn-arrow{
+  display:inline-flex;
+  transition:transform .2s;
+}
+.cta-btn-primary:hover .cta-btn-arrow{transform:translateX(4px)}
+
+.cta-secondary-link{
+  font-size:.88rem;color:rgba(255,255,255,.5);
+  text-decoration:none;
+  transition:color .2s;
+}
+.cta-secondary-link:hover{color:rgba(255,255,255,.85)}
+
+/* Mini-prova social */
+.cta-social{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:32px;
+}
+.cta-avatars{display:flex}
+.cta-avatars span{
+  width:36px;height:36px;border-radius:50%;
+  font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  border:2.5px solid #0f0f0f;
+  margin-left:-10px;
+}
+.cta-avatars span:first-child{margin-left:0}
+.cta-social-text{
+  font-size:.9rem;color:rgba(255,255,255,.65);
+  line-height:1.4;
+  text-align:left;
+}
+.cta-social-text strong{color:#fff}
+
+/* Garantias */
+.cta-guarantees{
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;flex-wrap:wrap;
+  font-size:.8rem;color:rgba(255,255,255,.4);
+}
+.cta-guarantees span{display:flex;align-items:center;gap:5px}
+.cta-sep{color:rgba(255,255,255,.15)}
+
+@media(max-width:560px){
+  .cta-final{padding:80px 20px 72px}
+  .cta-btn-primary{width:100%;justify-content:center;font-size:1rem;padding:16px 32px}
+  .cta-social{flex-direction:column;gap:10px}
+  .cta-social-text{text-align:center}
+}
+
+/* ── FOOTER ─────────────────────────────────────── */
+.footer{
+  background:#111;color:#aaa;
+  padding:64px 24px 0;
+  font-size:.9rem;
+}
+.footer-inner{
+  max-width:1140px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1.6fr 1fr;
+  gap:56px;
+  padding-bottom:56px;
+  border-bottom:1px solid #222;
+}
+.footer-logo{
+  font-family:'Poppins',sans-serif;
+  font-size:1.4rem;font-weight:800;
+  color:#fff;margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+}
+.footer-logo span{color:#C62828}
+.footer-tagline{color:#666;font-size:.85rem;margin-bottom:20px}
+.footer-social{display:flex;gap:10px}
+.social-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:50%;
+  background:#1a1a1a;color:#888;
+  transition:background .2s,color .2s;
+  text-decoration:none;
+}
+.social-icon:hover{background:#C62828;color:#fff}
+
+.footer-links{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+}
+.footer-col h4{
+  font-family:'Poppins',sans-serif;
+  font-size:.8rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;margin-bottom:16px;
+}
+.footer-col a{
+  display:block;color:#888;
+  text-decoration:none;
+  margin-bottom:10px;
+  font-size:.875rem;
+  transition:color .2s;
+}
+.footer-col a:hover{color:#C62828}
+
+.footer-bottom{
+  max-width:1140px;margin:0 auto;
+  padding:20px 0;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:8px;
+  font-size:.8rem;color:#444;
+}
+
+@media(max-width:768px){
+  .cta-title{font-size:1.8rem}
+  .cta-actions{flex-direction:column;align-items:center}
+  .cta-btn-primary,.cta-btn-ghost{width:100%;justify-content:center}
+  .footer-inner{grid-template-columns:1fr;gap:40px}
+  .footer-links{grid-template-columns:repeat(2,1fr);gap:24px}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="topo">
+  <a href="#topo" class="nav-logo">🇪🇸 Habla</a>
+  <div class="nav-links">
+    <a href="#experiencia">A plataforma</a>
+    <a href="#maestro">O professor</a>
+    <a href="#como-usar">Como usar</a>
+    <a href="#depoimentos">Depoimentos</a>
+  </div>
+  <a href="index.html" class="nav-cta">Acessar plataforma →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+
+  <div class="hero-inner">
+
+    <!-- ── Coluna Esquerda — Boas-vindas ── -->
+    <div class="hero-left">
+
+      <!-- Tag exclusivo -->
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span>Plataforma exclusiva · Maestro Gabriel</span>
+      </div>
+
+      <!-- Título principal -->
+      <p class="hero-label">Bem-vindo à sua plataforma de espanhol</p>
+      <h1 class="hero-title">
+        O espanhol que você<br>
+        vai aprender com
+      </h1>
+      <span class="hero-maestro">Maestro Gabriel.</span>
+
+      <!-- Frase sofisticada -->
+      <p class="hero-sub">
+        "Aprender um idioma não é copiar palavras — é construir um novo olhar sobre o mundo. Aqui começa o seu."
+      </p>
+
+      <!-- Botão de acesso -->
+      <a href="index.html" class="hero-cta">
+        Acessar minha plataforma
+        <span class="hero-cta-arrow">→</span>
+      </a>
+
+      <p class="hero-note">Acesso exclusivo para alunos matriculados</p>
+
+    </div>
+
+    <!-- ── Coluna Direita — Card de boas-vindas ── -->
+    <div class="hero-right">
+
+      <!-- Badge flutuante topo -->
+      <div class="hc-float hc-float-1">
+        <span class="hc-float-icon">✨</span>
+        ¡Bienvenido, alumno!
+      </div>
+
+      <!-- Badge flutuante base -->
+      <div class="hc-float hc-float-2">
+        <span class="hc-float-icon">🎯</span>
+        Aula liberada · A2 · Módulo 2
+      </div>
+
+      <div class="hero-card">
+
+        <!-- Cabeçalho premium escuro -->
+        <div class="hc-header">
+          <div class="hc-header-content">
+            <div class="hc-tag">Plataforma Habla · Acesso do aluno</div>
+            <div class="hc-welcome">¡Hola! Você está<br>no lugar <span>certo</span>.</div>
+            <div class="hc-prof">Acompanhado pelo Maestro Gabriel</div>
+
+            <div class="hc-level-bar">
+              <div class="hc-level-badge">A2</div>
+              <div class="hc-level-info">
+                <div class="hc-level-label">Seu nível atual</div>
+                <div class="hc-progress-wrap">
+                  <div class="hc-progress-fill"></div>
+                </div>
+                <div class="hc-level-pct">48% concluído neste nível</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Corpo -->
+        <div class="hc-body">
+
+          <div class="hc-section-label">Sua trilha de estudos</div>
+
+          <div class="hc-module">
+            <div class="hc-module-icon hcm-done">✅</div>
+            <div class="hc-module-info">
+              <div class="hc-module-name">Verbos Pronominales</div>
+              <div class="hc-module-meta">A2 · Módulo 1</div>
+            </div>
+            <span class="hc-module-status hcms-done">¡Listo!</span>
+          </div>
+
+          <div class="hc-module" style="background:var(--red-light)">
+            <div class="hc-module-icon hcm-active">📖</div>
+            <div class="hc-module-info">
+              <div class="hc-module-name">Pretérito Indefinido</div>
+              <div class="hc-module-meta">A2 · Módulo 2 · Em andamento</div>
+            </div>
+            <span class="hc-module-status hcms-active">Continuar</span>
+          </div>
+
+          <div class="hc-module">
+            <div class="hc-module-icon hcm-locked">🔒</div>
+            <div class="hc-module-info">
+              <div class="hc-module-name">Indefinido vs. Imperfecto</div>
+              <div class="hc-module-meta">A2 · Módulo 3</div>
+            </div>
+            <span class="hc-module-status hcms-locked">Bloqueado</span>
+          </div>
+
+          <a href="index.html" class="hc-btn">
+            Entrar na plataforma →
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     EXPERIÊNCIA DO ALUNO
+════════════════════════════════════════════════ -->
+<section class="exp" id="experiencia">
+  <div class="exp-inner">
+
+    <!-- Cabeçalho -->
+    <div class="exp-header">
+      <div>
+        <span class="section-eyebrow">Dentro da plataforma</span>
+        <h2 class="section-title">Tudo que você precisa<br>em um só lugar.</h2>
+      </div>
+      <p class="exp-header-right">
+        A plataforma do Maestro Gabriel foi pensada para que cada aluno tenha uma experiência completa — do conteúdo às atividades, com acompanhamento real do professor em cada etapa.
+      </p>
+    </div>
+
+    <!-- Grid 2×2 -->
+    <div class="exp-grid">
+
+      <!-- ── Card 1: Aulas ── -->
+      <div class="exp-card">
+        <div class="ec-top ec-top--red">
+          <div class="ec-num">01 · Aulas</div>
+          <span class="ec-icon">🎓</span>
+          <div class="ec-title">Aulas estruturadas<br>do A1 ao C2</div>
+          <div class="ec-subtitle">Conteúdo em progressão lógica, sem pular etapas</div>
+        </div>
+        <div class="ec-body">
+          <p class="ec-desc">Cada aula é organizada em módulos com objetivo claro. Você avança no seu ritmo, desbloqueando o próximo conteúdo conforme conclui.</p>
+          <div class="ec-features">
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-red">✓</div>
+              69 módulos distribuídos em 6 níveis
+            </div>
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-red">✓</div>
+              Gramática, vocabulário e compreensão
+            </div>
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-red">✓</div>
+              Trilha adaptada pelo professor
+            </div>
+          </div>
+          <div class="ec-preview">
+            <div class="ep-label">Sua trilha — Nível A2</div>
+            <div class="ep-lesson-item done">
+              <div class="ep-lesson-num epn-done">✓</div>
+              <span class="ep-lesson-name">Verbos Pronominales</span>
+              <span style="font-size:.7rem;color:#2e7d32;font-weight:700">¡Listo!</span>
+            </div>
+            <div class="ep-lesson-item active">
+              <div class="ep-lesson-num epn-active">2</div>
+              <span class="ep-lesson-name">Pretérito Indefinido</span>
+              <span style="font-size:.7rem;font-weight:700">Em andamento</span>
+            </div>
+            <div class="ep-lesson-item">
+              <div class="ep-lesson-num epn-lock">3</div>
+              <span class="ep-lesson-name" style="color:#bbb">Indefinido vs. Imperfecto</span>
+              <span style="font-size:.7rem;color:#ccc">🔒</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Card 2: Apostila ── -->
+      <div class="exp-card">
+        <div class="ec-top ec-top--dark">
+          <div class="ec-num">02 · Apostila</div>
+          <span class="ec-icon">📚</span>
+          <div class="ec-title">Material didático<br>exclusivo do Maestro</div>
+          <div class="ec-subtitle">PDFs e recursos organizados por módulo</div>
+        </div>
+        <div class="ec-body">
+          <p class="ec-desc">Cada módulo acompanha material de apoio preparado pelo Maestro Gabriel — para você revisar, anotar e estudar offline quando quiser.</p>
+          <div class="ec-features">
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-dark">✓</div>
+              PDFs por nível, sempre atualizados
+            </div>
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-dark">✓</div>
+              Resumos de gramática e vocabulário
+            </div>
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-dark">✓</div>
+              Disponível para baixar a qualquer hora
+            </div>
+          </div>
+          <div class="ec-preview">
+            <div class="ep-label">Materiais disponíveis</div>
+            <div class="ep-apostila">
+              <div class="ep-ap-row">
+                <span class="ep-ap-icon">📄</span>
+                <span class="ep-ap-name">Apostila A1 — Completa</span>
+                <span class="ep-ap-tag ept-pdf">PDF</span>
+              </div>
+              <div class="ep-ap-row">
+                <span class="ep-ap-icon">📄</span>
+                <span class="ep-ap-name">Gramática A2 — Módulo 2</span>
+                <span class="ep-ap-tag ept-novo">Novo</span>
+              </div>
+              <div class="ep-ap-row">
+                <span class="ep-ap-icon">📋</span>
+                <span class="ep-ap-name">Lista de verbos irregulares</span>
+                <span class="ep-ap-tag ept-pdf">PDF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Card 3: Atividades ── -->
+      <div class="exp-card">
+        <div class="ec-top ec-top--yellow">
+          <div class="ec-num">03 · Atividades</div>
+          <span class="ec-icon">✏️</span>
+          <div class="ec-title">Exercícios que fixam<br>o que você aprendeu</div>
+          <div class="ec-subtitle">Múltipla escolha, lacunas, verdadeiro ou falso</div>
+        </div>
+        <div class="ec-body">
+          <p class="ec-desc">Cada módulo tem atividades práticas com correção imediata. O sistema identifica onde você errou e registra seu progresso automaticamente.</p>
+          <div class="ec-features">
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-yellow">✓</div>
+              Correção automática com feedback
+            </div>
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-yellow">✓</div>
+              Pontuação salva a cada exercício
+            </div>
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-yellow">✓</div>
+              Professor vê onde você teve dificuldade
+            </div>
+          </div>
+          <div class="ec-preview">
+            <div class="ep-label">Exercício em andamento</div>
+            <div class="ep-quiz">
+              <div class="ep-question">¿Cuál es la forma correcta del verbo <em>ir</em> en pretérito?</div>
+              <div class="ep-opt ep-correct">✓ &nbsp;Él <strong>fue</strong> al mercado.</div>
+              <div class="ep-opt ep-wrong">✗ &nbsp;Él <strong>iba</strong> al mercado.</div>
+              <div class="ep-opt ep-neutral">Él <strong>va</strong> al mercado.</div>
+              <div class="ep-feedback">¡Muy bien! Resposta correta. +10 pts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Card 4: Professor ── -->
+      <div class="exp-card">
+        <div class="ec-top ec-top--wine">
+          <div class="ec-num">04 · Professor</div>
+          <span class="ec-icon">👨‍🏫</span>
+          <div class="ec-title">O Maestro Gabriel<br>acompanha você</div>
+          <div class="ec-subtitle">Não é um app automático — é uma relação real</div>
+        </div>
+        <div class="ec-body">
+          <p class="ec-desc">O Maestro vê seu progresso em tempo real, libera módulos, deixa comentários e está presente na sua jornada — do início ao C2.</p>
+          <div class="ec-features">
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-wine">✓</div>
+              Painel exclusivo do professor
+            </div>
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-wine">✓</div>
+              Feedback personalizado por aluno
+            </div>
+            <div class="ec-feature">
+              <div class="ec-feature-dot efd-wine">✓</div>
+              Módulos liberados conforme evolução
+            </div>
+          </div>
+          <div class="ec-preview">
+            <div class="ep-label">Mensagem do Maestro</div>
+            <div class="ep-chat">
+              <div class="ep-msg ep-msg-teacher">
+                <div class="ep-avatar-sm" style="background:#C62828">MG</div>
+                <div class="ep-bubble ep-bubble-teacher">¡Excelente, alumno! Você concluiu o módulo 1 com 94%. Já liberei o próximo. ¡Vamos! 🚀</div>
+                <span class="ep-time">agora</span>
+              </div>
+              <div class="ep-msg ep-msg-student">
+                <div class="ep-avatar-sm" style="background:#555">EU</div>
+                <div class="ep-bubble ep-bubble-student">Obrigado, Maestro! Já vou começar o módulo 2.</div>
+                <span class="ep-time">1min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Selo inferior -->
+    <div class="exp-seal">
+      <div class="es-text">
+        <h3>Uma plataforma feita para quem leva o espanhol a sério.</h3>
+        <p>Cada detalhe foi pensado para que você avance com clareza, confiança e o suporte de quem entende do assunto.</p>
+      </div>
+      <div class="es-chips">
+        <div class="es-chip"><span class="es-chip-dot"></span>Progresso salvo</div>
+        <div class="es-chip"><span class="es-chip-dot"></span>Acesso pelo celular</div>
+        <div class="es-chip"><span class="es-chip-dot"></span>Professor real</div>
+        <div class="es-chip"><span class="es-chip-dot"></span>Do A1 ao C2</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     MAESTRO GABRIEL
+════════════════════════════════════════════════ -->
+<section class="maestro" id="maestro">
+  <div class="maestro-inner">
+
+    <!-- ── Coluna esquerda: cartão do professor ── -->
+    <div class="maestro-card">
+
+      <div class="mc-profile">
+        <div class="mc-avatar">G</div>
+        <div class="mc-tag">Professor de Espanhol</div>
+        <div class="mc-name">Maestro<br>Gabriel</div>
+        <div class="mc-role">Especialista em espanhol A1–C2</div>
+        <div class="mc-divider"></div>
+        <div class="mc-stats">
+          <div class="mc-stat">
+            <span class="mc-stat-num">+500</span>
+            <span class="mc-stat-label">Alunos formados</span>
+          </div>
+          <div class="mc-stat">
+            <span class="mc-stat-num">6</span>
+            <span class="mc-stat-label">Níveis de ensino</span>
+          </div>
+          <div class="mc-stat">
+            <span class="mc-stat-num">69</span>
+            <span class="mc-stat-label">Módulos criados</span>
+          </div>
+          <div class="mc-stat">
+            <span class="mc-stat-num">4.9★</span>
+            <span class="mc-stat-label">Avaliação média</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mc-creds">
+        <div class="mc-cred">
+          <div class="mc-cred-icon">🎓</div>
+          <span class="mc-cred-text">Formação em Letras — Espanhol</span>
+        </div>
+        <div class="mc-cred">
+          <div class="mc-cred-icon">🌍</div>
+          <span class="mc-cred-text">Fluência certificada — nível C2</span>
+        </div>
+        <div class="mc-cred">
+          <div class="mc-cred-icon">📋</div>
+          <span class="mc-cred-text">Método próprio A1 ao C2</span>
+        </div>
+        <div class="mc-cred">
+          <div class="mc-cred-icon">🤝</div>
+          <span class="mc-cred-text">Acompanhamento individual</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Coluna direita: conteúdo ── -->
+    <div class="maestro-content">
+
+      <span class="section-eyebrow">Seu professor</span>
+      <h2 class="section-title" style="margin-bottom:28px">Não é um app.<br>É um professor de verdade.</h2>
+
+      <p class="maestro-intro">
+        O Maestro Gabriel não criou mais um curso de espanhol. Ele construiu uma <strong>jornada de aprendizado personalizada</strong> — onde cada aluno tem um caminho próprio, acompanhado de perto por quem conhece o idioma de dentro para fora.
+        <br><br>
+        Enquanto a maioria das plataformas te deixa sozinho com vídeos e exercícios, aqui você tem um professor que <strong>vê o seu progresso, libera seus módulos e sabe onde você precisa melhorar</strong>. A diferença é simples: um humano que se importa com a sua evolução.
+      </p>
+
+      <!-- Citação -->
+      <div class="maestro-quote">
+        <p>"Ensinar espanhol é muito mais do que conjugar verbos. É abrir uma janela para uma nova cultura, uma nova forma de pensar e de se conectar com o mundo. Cada aluno meu aprende isso no seu tempo — mas nunca sozinho."</p>
+        <cite>— Maestro Gabriel</cite>
+      </div>
+
+      <!-- Método -->
+      <div class="maestro-method">
+        <div class="mm-title">O método do Maestro</div>
+        <div class="mm-steps">
+
+          <div class="mm-step">
+            <div class="mm-step-num">01</div>
+            <div class="mm-step-body">
+              <h4>Diagnóstico e nível inicial</h4>
+              <p>Antes de começar, o Maestro avalia seu ponto de partida e define qual nível é o certo para você — sem pular etapas, sem recomeçar do zero à toa.</p>
+            </div>
+          </div>
+
+          <div class="mm-step">
+            <div class="mm-step-num">02</div>
+            <div class="mm-step-body">
+              <h4>Trilha estruturada e progressiva</h4>
+              <p>Você avança módulo a módulo, desbloqueando o próximo conteúdo conforme conclui. A ordem importa — cada aula prepara o terreno para a próxima.</p>
+            </div>
+          </div>
+
+          <div class="mm-step">
+            <div class="mm-step-num">03</div>
+            <div class="mm-step-body">
+              <h4>Prática com correção real</h4>
+              <p>Atividades com feedback imediato e pontuação. O Maestro acompanha seus resultados e intervém quando necessário — antes que o erro vire hábito.</p>
+            </div>
+          </div>
+
+          <div class="mm-step">
+            <div class="mm-step-num">04</div>
+            <div class="mm-step-body">
+              <h4>Evolução visível e contínua</h4>
+              <p>Cada módulo concluído é uma conquista registrada. Você vê onde chegou, o que ainda falta e o quanto já evoluiu — com o Maestro validando cada etapa.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Encerramento -->
+      <div class="maestro-closing">
+        <div class="mc-closing-icon">🇪🇸</div>
+        <div class="mc-closing-text">
+          <p><strong>Você não vai aprender espanhol sozinho.</strong> O Maestro Gabriel vai estar com você — do primeiro "hola" até o dia em que você pensar em espanhol sem perceber.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     COMO USAR — ALUNOS
+════════════════════════════════════════════════ -->
+<section class="howuse" id="como-usar">
+  <div class="howuse-inner">
+
+    <!-- Cabeçalho -->
+    <div class="howuse-header">
+      <span class="section-eyebrow">Para alunos matriculados</span>
+      <h2 class="section-title">Como usar a plataforma<br>no dia a dia.</h2>
+      <p class="section-sub" style="margin:12px auto 0;text-align:center">Três momentos simples. Cada um com um propósito claro.</p>
+    </div>
+
+    <!-- 3 Passos -->
+    <div class="howuse-steps">
+
+      <!-- Passo 1 -->
+      <div class="hu-step">
+        <div class="hu-icon-wrap hu-icon-wrap--red" data-num="1">
+          <span class="hu-icon">🔐</span>
+        </div>
+        <h3>Acesso à plataforma</h3>
+        <p>Você recebe o link do Maestro Gabriel. Basta entrar com seu nome — sem senha complicada, sem cadastro longo.</p>
+        <div class="hu-details">
+          <div class="hu-detail">
+            <span class="hu-detail-icon">🔗</span>
+            Link enviado pelo Maestro
+          </div>
+          <div class="hu-detail">
+            <span class="hu-detail-icon">✏️</span>
+            Apenas seu nome para entrar
+          </div>
+          <div class="hu-detail">
+            <span class="hu-detail-icon">📱</span>
+            Funciona no celular ou computador
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 2 -->
+      <div class="hu-step">
+        <div class="hu-icon-wrap hu-icon-wrap--dark" data-num="2">
+          <span class="hu-icon">🎓</span>
+        </div>
+        <h3>Durante as aulas</h3>
+        <p>A plataforma acompanha o conteúdo ensinado pelo Maestro. Os módulos seguem a aula — você pratica enquanto aprende.</p>
+        <div class="hu-details">
+          <div class="hu-detail">
+            <span class="hu-detail-icon">📖</span>
+            Módulo aberto conforme a aula
+          </div>
+          <div class="hu-detail">
+            <span class="hu-detail-icon">✅</span>
+            Exercícios durante ou após a aula
+          </div>
+          <div class="hu-detail">
+            <span class="hu-detail-icon">👨‍🏫</span>
+            Maestro acompanha em tempo real
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 3 -->
+      <div class="hu-step">
+        <div class="hu-icon-wrap hu-icon-wrap--yellow" data-num="3">
+          <span class="hu-icon">📚</span>
+        </div>
+        <h3>Estudo complementar</h3>
+        <p>Depois da aula, você revisita o conteúdo, refaz os exercícios, baixa a apostila e consolida o que aprendeu — no seu ritmo.</p>
+        <div class="hu-details">
+          <div class="hu-detail">
+            <span class="hu-detail-icon">📄</span>
+            Apostila disponível para download
+          </div>
+          <div class="hu-detail">
+            <span class="hu-detail-icon">🔁</span>
+            Atividades para revisar e fixar
+          </div>
+          <div class="hu-detail">
+            <span class="hu-detail-icon">📊</span>
+            Progresso salvo automaticamente
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Fluxo visual resumido -->
+    <div class="howuse-flow">
+      <div class="hf-block">
+        <div class="hf-num hf-num--red">1</div>
+        <div class="hf-label">Acessa a plataforma</div>
+        <div class="hf-sub">Pelo link do Maestro</div>
+      </div>
+      <div class="hf-arrow">→</div>
+      <div class="hf-block">
+        <div class="hf-num hf-num--dark">2</div>
+        <div class="hf-label">Acompanha a aula</div>
+        <div class="hf-sub">Módulo + exercícios ao vivo</div>
+      </div>
+      <div class="hf-arrow">→</div>
+      <div class="hf-block">
+        <div class="hf-num hf-num--yellow">3</div>
+        <div class="hf-label">Reforça em casa</div>
+        <div class="hf-sub">Apostila, revisão e progresso</div>
+      </div>
+    </div>
+
+    <!-- Nota -->
+    <div class="howuse-note">
+      <span>🔒 Acesso exclusivo</span>
+      <span class="howuse-note-dot">·</span>
+      <span>📱 Funciona em qualquer dispositivo</span>
+      <span class="howuse-note-dot">·</span>
+      <span>✓ Progresso salvo sempre</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- [REMOVIDO: seção "Sobre a plataforma" — redundante com Experiência e Maestro] -->
+<section class="about" id="sobre" style="display:none">
+  <div class="about-inner">
+
+    <!-- Cabeçalho -->
+    <div class="about-header">
+      <span class="section-eyebrow">O que é o Habla?</span>
+      <h2 class="section-title">Uma plataforma feita para quem<br>quer resultado de verdade.</h2>
+      <p class="about-lead">
+        O Habla não é mais um app de vocabulário isolado. É uma plataforma completa — com trilha estruturada do A1 ao C2, exercícios práticos de gramática, leitura e escuta, e um professor que acompanha cada passo da sua evolução.
+      </p>
+    </div>
+
+    <!-- Grid de diferenciais -->
+    <div class="about-grid">
+
+      <div class="about-card about-card--red">
+        <div class="about-icon">🗺️</div>
+        <h3>Trilha clara, do zero à fluência</h3>
+        <p>69 módulos organizados em 6 níveis (A1 → C2). Você sempre sabe onde está e o que vem a seguir — sem dúvidas, sem saltos.</p>
+      </div>
+
+      <div class="about-card">
+        <div class="about-icon">✏️</div>
+        <h3>Exercícios que ensinam de verdade</h3>
+        <p>Gramática, vocabulário, leitura e compreensão auditiva. Cada módulo tem múltiplos tipos de atividade para fixar o conteúdo na prática.</p>
+      </div>
+
+      <div class="about-card">
+        <div class="about-icon">👨‍🏫</div>
+        <h3>Professor presente, não opcional</h3>
+        <p>O seu professor acompanha seu progresso em tempo real — vê onde você travou, libera módulos e dá feedback quando precisa.</p>
+      </div>
+
+      <div class="about-card">
+        <div class="about-icon">📈</div>
+        <h3>Progresso visível a cada aula</h3>
+        <p>Painel com pontuação, nível atual e habilidades a desenvolver. Cada exercício concluído conta — você vê a evolução acontecer.</p>
+      </div>
+
+    </div>
+
+    <!-- Proposta de valor central -->
+    <div class="about-proposition">
+      <div class="prop-text">
+        <h3>Nossa proposta</h3>
+        <p>
+          A maioria das pessoas desiste porque não tem estrutura, não tem progresso visível e não tem ninguém para acompanhar. O Habla resolve os três — com uma plataforma pensada para o aluno real, que tem rotina, tem dúvidas e precisa ver resultado.
+        </p>
+        <ul class="prop-list">
+          <li><span class="prop-check">✓</span> Conteúdo estruturado do A1 ao C2</li>
+          <li><span class="prop-check">✓</span> Professor que acompanha de perto</li>
+          <li><span class="prop-check">✓</span> Progresso salvo e visível sempre</li>
+          <li><span class="prop-check">✓</span> Funciona no celular, tablet ou computador</li>
+        </ul>
+        <a href="index.html" class="prop-cta">Começar agora →</a>
+      </div>
+      <div class="prop-visual">
+        <div class="prop-card">
+          <div class="pc-header">
+            <div class="pc-dot" style="background:#C62828"></div>
+            <div class="pc-dot" style="background:#FBC02D"></div>
+            <div class="pc-dot" style="background:#4caf50"></div>
+            <span>Meu progresso</span>
+          </div>
+          <div class="pc-level">
+            <span class="pc-badge">A2</span>
+            <div>
+              <div class="pc-label">Nível atual</div>
+              <div class="pc-bar-wrap"><div class="pc-bar" style="width:68%"></div></div>
+              <div class="pc-pct">68% concluído</div>
+            </div>
+          </div>
+          <div class="pc-skills">
+            <div class="pc-skill"><span>Gramática</span><div class="pcs-bar"><div style="width:75%;background:#C62828"></div></div></div>
+            <div class="pc-skill"><span>Vocabulário</span><div class="pcs-bar"><div style="width:60%;background:#FBC02D"></div></div></div>
+            <div class="pc-skill"><span>Leitura</span><div class="pcs-bar"><div style="width:82%;background:#4caf50"></div></div></div>
+          </div>
+          <div class="pc-next">
+            <span class="pc-next-label">Próxima aula</span>
+            <span class="pc-next-module">Módulo 14 — Verbos reflexivos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- [REMOVIDO: seção Benefits — tom de venda, fora do escopo] -->
+<section class="benefits" id="beneficios" style="display:none">
+  <div class="benefits-inner">
+
+    <div class="section-eyebrow">¿Por qué Habla?</div>
+    <h2 class="section-title">Tudo que você precisa<br>para aprender de verdade.</h2>
+    <p class="section-sub">Sem enrolação, sem memorização chata. Aprenda espanhol do jeito que funciona.</p>
+
+    <div class="benefits-grid">
+
+      <div class="benefit-card" style="--accent:#C62828;--tag-bg:#ffebee">
+        <span class="benefit-icon">📚</span>
+        <div class="benefit-title">Do A1 ao C2 em um só lugar</div>
+        <p class="benefit-desc">69 módulos organizados por nível. Você começa do zero e avança até a fluência — sem precisar de outra plataforma.</p>
+        <span class="benefit-tag">6 níveis completos</span>
+      </div>
+
+      <div class="benefit-card" style="--accent:#FBC02D;--tag-bg:#fff8e1">
+        <span class="benefit-icon">🎯</span>
+        <div class="benefit-title">Trilha personalizada pelo professor</div>
+        <p class="benefit-desc">Seu professor monta a sequência certa para você. Nada de conteúdo genérico — cada módulo tem um motivo para estar ali.</p>
+        <span class="benefit-tag" style="color:#F57F17">Aprendizado guiado</span>
+      </div>
+
+      <div class="benefit-card" style="--accent:#10b981;--tag-bg:#dcfce7">
+        <span class="benefit-icon">⚡</span>
+        <div class="benefit-title">Avance no seu próprio ritmo</div>
+        <p class="benefit-desc">Estude quando puder. A plataforma salva seu progresso automaticamente e mostra exatamente onde você parou.</p>
+        <span class="benefit-tag" style="color:#2e7d32;background:#dcfce7">Sem pressão</span>
+      </div>
+
+      <div class="benefit-card" style="--accent:#C62828;--tag-bg:#ffebee">
+        <span class="benefit-icon">✅</span>
+        <div class="benefit-title">Exercícios práticos a cada módulo</div>
+        <p class="benefit-desc">Múltipla escolha, verdadeiro ou falso, preencha o espaço. Você pratica enquanto aprende — e recebe feedback na hora.</p>
+        <span class="benefit-tag">¡Muy bien! ✓</span>
+      </div>
+
+      <div class="benefit-card" style="--accent:#FBC02D;--tag-bg:#fff8e1">
+        <span class="benefit-icon">📊</span>
+        <div class="benefit-title">Veja sua evolução em tempo real</div>
+        <p class="benefit-desc">Painel de progresso por nível, por habilidade e por módulo. Você sabe exatamente quanto já avançou e o que ainda falta.</p>
+        <span class="benefit-tag" style="color:#F57F17">Progresso visível</span>
+      </div>
+
+      <div class="benefit-card" style="--accent:#3b82f6;--tag-bg:#dbeafe">
+        <span class="benefit-icon">💬</span>
+        <div class="benefit-title">Feedback direto do professor</div>
+        <p class="benefit-desc">O professor acompanha suas respostas, deixa notas nos módulos e envia atividades extras quando percebe que você precisa de reforço.</p>
+        <span class="benefit-tag" style="color:#1d4ed8;background:#dbeafe">Suporte real</span>
+      </div>
+
+    </div>
+
+    <!-- Bloco de destaque -->
+    <div class="benefits-highlight">
+      <div class="highlight-left">
+        <h3>¡Empieza hoy!<br>O primeiro passo é agora.</h3>
+        <p>Acesse a plataforma, escolha seu nível e comece o primeiro módulo em menos de 2 minutos. Simples assim.</p>
+        <button class="highlight-btn" onclick="window.location.href='index.html'">
+          Quero começar agora →
+        </button>
+      </div>
+      <div class="highlight-right">
+        <div class="hl-item">
+          <span class="hl-num">2 min</span>
+          <span class="hl-label">para começar o primeiro módulo</span>
+        </div>
+        <div class="hl-item">
+          <span class="hl-num">100%</span>
+          <span class="hl-label">online, sem instalar nada</span>
+        </div>
+        <div class="hl-item">
+          <span class="hl-num">A1→C2</span>
+          <span class="hl-label">todo o caminho coberto</span>
+        </div>
+        <div class="hl-item">
+          <span class="hl-num">0 custo</span>
+          <span class="hl-label">para começar agora</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- [REMOVIDO: Como funciona genérico — substituído por "Como usar" específico p/ alunos] -->
+<section class="how" id="como-funciona" style="display:none">
+  <div class="how-inner">
+
+    <div class="section-eyebrow" style="background:#fff8e1;border-color:#FBC02D;color:#F57F17">¿Cómo funciona?</div>
+    <h2 class="section-title">Simples assim —<br>4 passos para começar.</h2>
+    <p class="section-sub">Sem configuração complicada. Você entra, escolhe seu nível e já começa a aprender.</p>
+
+    <!-- Steps -->
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">01</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-tag">Cadastro</div>
+          <h3 class="step-title">Entre com seu nome — sem senha, sem formulário longo.</h3>
+          <p class="step-desc">Você só digita seu nome e já está dentro. Seu professor já foi avisado e pode acompanhar seu progresso em tempo real.</p>
+          <div class="step-detail">
+            <span>✓ Acesso imediato</span>
+            <span>✓ Sem instalação</span>
+            <span>✓ Funciona no celular</span>
+          </div>
+        </div>
+        <div class="step-visual sv-1">
+          <div class="sv-card">
+            <div class="sv-label">¿Cómo te llamas?</div>
+            <div class="sv-input">Larissa Mendes<span class="sv-cursor">|</span></div>
+            <div class="sv-btn">¡Vamos! Entrar →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">02</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-tag">Trilha</div>
+          <h3 class="step-title">Seu professor monta a trilha certa para você.</h3>
+          <p class="step-desc">Nada de tentar adivinhar por onde começar. O professor define os módulos, a ordem e o ritmo — você só estuda.</p>
+          <div class="step-detail">
+            <span>✓ Trilha personalizada</span>
+            <span>✓ Sequência lógica</span>
+            <span>✓ Atualizada em tempo real</span>
+          </div>
+        </div>
+        <div class="step-visual sv-2">
+          <div class="sv-card">
+            <div class="sv-trail-item done">
+              <span class="sv-trail-num done-n">✓</span>
+              <div><div class="sv-trail-title">Saludos y Despedidas</div><div class="sv-trail-meta">A1 · Módulo 2 · ¡Completado!</div></div>
+            </div>
+            <div class="sv-trail-item active">
+              <span class="sv-trail-num active-n">3</span>
+              <div><div class="sv-trail-title">Presentarse</div><div class="sv-trail-meta">A1 · Módulo 3 · Em andamento</div></div>
+            </div>
+            <div class="sv-trail-item locked">
+              <span class="sv-trail-num locked-n">4</span>
+              <div><div class="sv-trail-title">Información Personal</div><div class="sv-trail-meta">A1 · Módulo 4 · 🔒</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">03</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-tag">Aprendizado</div>
+          <h3 class="step-title">Leia o conteúdo e responda os exercícios.</h3>
+          <p class="step-desc">Cada módulo tem explicação clara, exemplos reais e exercícios interativos. Você pratica e recebe o resultado na hora — sem esperar.</p>
+          <div class="step-detail">
+            <span>✓ Conteúdo + prática</span>
+            <span>✓ Feedback imediato</span>
+            <span>✓ Salvo automaticamente</span>
+          </div>
+        </div>
+        <div class="step-visual sv-3">
+          <div class="sv-card">
+            <div class="sv-question">¿Cómo se dice "bom dia"?</div>
+            <div class="sv-opt correct">✓ Buenos días</div>
+            <div class="sv-opt wrong">✗ Buenas noches</div>
+            <div class="sv-feedback">¡Muy bien! Resposta correta ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">04</div>
+        </div>
+        <div class="step-body">
+          <div class="step-tag">Progresso</div>
+          <h3 class="step-title">Avance de módulo em módulo — e veja sua evolução.</h3>
+          <p class="step-desc">Cada módulo concluído desbloqueia o próximo. Seu progresso fica visível para você e para o professor — que pode intervir quando precisar.</p>
+          <div class="step-detail">
+            <span>✓ Desbloqueio automático</span>
+            <span>✓ Professor acompanha</span>
+            <span>✓ Do A1 ao C2</span>
+          </div>
+        </div>
+        <div class="step-visual sv-4">
+          <div class="sv-card">
+            <div class="sv-levels">
+              <div class="sv-lv done-lv">A1 <span>✓</span></div>
+              <div class="sv-lv active-lv">A2 <span>42%</span></div>
+              <div class="sv-lv lock-lv">B1</div>
+              <div class="sv-lv lock-lv">B2</div>
+              <div class="sv-lv lock-lv">C1</div>
+              <div class="sv-lv lock-lv">C2</div>
+            </div>
+            <div class="sv-prog-bar"><div class="sv-prog-fill"></div></div>
+            <div class="sv-prog-label">Progresso geral: 28%</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA final -->
+    <div class="how-cta">
+      <p>Pronto para começar? É rápido, simples e gratuito.</p>
+      <button class="btn-primary" onclick="window.location.href='index.html'">
+        ¡Empieza ya! Quero aprender →
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PROVA SOCIAL ──────────────────────────────────────── -->
+<section class="proof" id="depoimentos">
+  <div class="proof-inner">
+
+    <div class="section-eyebrow">Depoimentos</div>
+    <h2 class="section-title">O que dizem os alunos<br>do Maestro Gabriel.</h2>
+    <p class="section-sub">Experiências reais de quem está na jornada.</p>
+
+    <!-- Números -->
+    <div class="proof-numbers">
+      <div class="pn-item">
+        <span class="pn-num">+500</span>
+        <span class="pn-label">alunos ativos<br>na plataforma</span>
+      </div>
+      <div class="pn-item">
+        <span class="pn-num">69</span>
+        <span class="pn-label">módulos do A1<br>ao C2</span>
+      </div>
+      <div class="pn-item">
+        <span class="pn-num">4.9★</span>
+        <span class="pn-label">avaliação média<br>dos alunos</span>
+      </div>
+      <div class="pn-item">
+        <span class="pn-num">3 meses</span>
+        <span class="pn-label">tempo médio para<br>sair do zero ao B1</span>
+      </div>
+    </div>
+
+    <!-- Destaque -->
+    <div class="featured-review">
+      <div>
+        <p class="fr-quote">
+          "Eu tentei vários aplicativos antes e sempre travava no básico.
+          Com o Habla, meu professor montou uma trilha só pra mim — e em
+          dois meses eu já conseguia me comunicar em espanhol no trabalho.
+          <strong>Nunca pensei que seria tão rápido.</strong>"
+        </p>
+        <div class="fr-author">
+          <div class="fr-avatar">LC</div>
+          <div>
+            <div class="fr-name">Larissa Carvalho</div>
+            <div class="fr-meta">Analista de comércio exterior · Começou do zero</div>
+          </div>
+        </div>
+      </div>
+      <div class="fr-result">
+        <span class="fr-result-num">A2</span>
+        <span class="fr-result-label">nível atingido<br>em 8 semanas</span>
+      </div>
+    </div>
+
+    <!-- Grid de depoimentos -->
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="rc-badge" style="background:#dcfce7;color:#2e7d32">A1 → B1</div>
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-text">
+          "Os exercícios são diretos ao ponto. Você lê, pratica e já sabe
+          se acertou — sem ficar perdido. O feedback do professor nos módulos
+          fez <strong>toda a diferença</strong> pra mim."
+        </p>
+        <div class="rc-author">
+          <div class="rc-avatar" style="background:#C62828">MR</div>
+          <div>
+            <div class="rc-name">Marcos Ribeiro</div>
+            <div class="rc-detail">Professor · 4 meses na plataforma</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-badge" style="background:#fff8e1;color:#F57F17">Primeira semana</div>
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-text">
+          "Na primeira semana já estava conseguindo formar frases em espanhol.
+          A progressão é muito bem feita — você não sente que está
+          aprendendo uma coisa solta, <strong>tudo conecta.</strong>"
+        </p>
+        <div class="rc-author">
+          <div class="rc-avatar" style="background:#FBC02D;color:#333333">JS</div>
+          <div>
+            <div class="rc-name">Juliana Souza</div>
+            <div class="rc-detail">Estudante universitária · Nível A2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-badge" style="background:#ffebee;color:#C62828">Uso no trabalho</div>
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-text">
+          "Precisava do espanhol pra reuniões com clientes da Argentina.
+          Em três meses com a trilha personalizada, já conduzo conversas
+          sem depender de tradutor. <strong>Resultado real, no prazo certo.</strong>"
+        </p>
+        <div class="rc-author">
+          <div class="rc-avatar" style="background:#3b82f6">PG</div>
+          <div>
+            <div class="rc-name">Pedro Gomes</div>
+            <div class="rc-detail">Gerente comercial · Nível B1</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-badge" style="background:#dcfce7;color:#2e7d32">Consistência</div>
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-text">
+          "Estudei 20 minutinhos por dia, todo dia. A plataforma salva onde
+          você parou e não deixa você esquecer o que já aprendeu.
+          <strong>Simples e eficiente.</strong>"
+        </p>
+        <div class="rc-author">
+          <div class="rc-avatar" style="background:#8b5cf6">AF</div>
+          <div>
+            <div class="rc-name">Ana Ferreira</div>
+            <div class="rc-detail">Designer · 20 min/dia · Nível A2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-badge" style="background:#fff8e1;color:#F57F17">Viagem</div>
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-text">
+          "Tinha viagem marcada pra Buenos Aires em 2 meses. Usei o Habla
+          focado nos módulos de cotidiano e viagem. Cheguei lá e consegui
+          me virar muito bem. <strong>Valeu cada módulo.</strong>"
+        </p>
+        <div class="rc-author">
+          <div class="rc-avatar" style="background:#f59e0b;color:#333333">RT</div>
+          <div>
+            <div class="rc-name">Rafael Torres</div>
+            <div class="rc-detail">Viajante · Meta específica · A1 → A2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-badge" style="background:#ffebee;color:#C62828">Retomada</div>
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-text">
+          "Havia parado o espanhol há 5 anos. Com o diagnóstico de nível
+          e a trilha personalizada, retomei do ponto certo — sem perder
+          tempo repetindo o que já sabia. <strong>Voltei pro B1 em 6 semanas.</strong>"
+        </p>
+        <div class="rc-author">
+          <div class="rc-avatar" style="background:#10b981">CM</div>
+          <div>
+            <div class="rc-name">Carla Menezes</div>
+            <div class="rc-detail">Advogada · Retomou após pausa · B1</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Selos de confiança -->
+    <div class="proof-trust">
+      <span class="trust-label">Por que confiar</span>
+      <div class="trust-chip">✅ Progresso salvo automaticamente</div>
+      <div class="trust-chip">🔒 Dados seguros</div>
+      <div class="trust-chip">📱 Funciona no celular</div>
+      <div class="trust-chip">👨‍🏫 Professor acompanha</div>
+      <div class="trust-chip">🆓 Sem custo para começar</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ACESSO DOS ALUNOS
+════════════════════════════════════════════════ -->
+<section class="access" id="acesso">
+  <div class="access-inner">
+
+    <!-- Selo central -->
+    <div class="access-seal">
+      <div class="access-seal-ring">
+        <span class="access-seal-logo">H</span>
+      </div>
+    </div>
+
+    <!-- Ornamento -->
+    <div class="access-ornament">
+      <div class="access-ornament-line"></div>
+      <span class="access-ornament-icon">área restrita</span>
+      <div class="access-ornament-line"></div>
+    </div>
+
+    <!-- Tag de status -->
+    <div class="access-tag">
+      <span class="access-tag-dot"></span>
+      <span>Exclusivo · Alunos do Maestro Gabriel</span>
+    </div>
+
+    <!-- Título -->
+    <h2 class="access-title">
+      Sua plataforma<br>está <span>esperando por você</span>.
+    </h2>
+
+    <!-- Subtítulo -->
+    <p class="access-sub">
+      Este é um espaço reservado para quem já está na jornada com o Maestro Gabriel. Seu progresso, seus módulos e seu professor — tudo aqui dentro.
+    </p>
+
+    <!-- Botão de acesso -->
+    <a href="index.html" class="access-btn">
+      <div class="access-btn-icon">→</div>
+      Acessar minha plataforma
+    </a>
+
+    <!-- Nota discreta -->
+    <p class="access-footnote">
+      Acesso restrito a alunos matriculados
+    </p>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <div class="footer-logo">🇪🇸 <span>Habla</span></div>
+      <p class="footer-tagline">Espanhol A1–C2 · Aprenda com confiança</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="social-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </a>
+        <a href="#" aria-label="WhatsApp" class="social-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Plataforma</h4>
+        <a href="#">Como funciona</a>
+        <a href="#">Níveis A1–C2</a>
+        <a href="#">Para professores</a>
+        <a href="#">Depoimentos</a>
+      </div>
+      <div class="footer-col">
+        <h4>Suporte</h4>
+        <a href="#">Central de ajuda</a>
+        <a href="#">Fale conosco</a>
+        <a href="#">Comunidade</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de uso</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Habla. Todos os direitos reservados.</span>
+    <span>Feito com ❤️ para quem quer aprender espanhol de verdade.</span>
+  </div>
+</footer>
+
+</body>
+</html>
