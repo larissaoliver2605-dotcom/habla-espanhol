@@ -566,6 +566,45 @@ tr:nth-child(even) td{background:#FFFFFF}
   .sp-label{width:70px}
 }
 
+/* ── CHAT ────────────────────────────────────────────────── */
+#chat-fab{position:fixed;bottom:24px;right:24px;width:58px;height:58px;background:var(--red);border-radius:50%;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(198,40,40,.45);z-index:900;transition:.2s}
+#chat-fab:hover{transform:scale(1.1);background:var(--red-dark)}
+#chat-fab-badge{position:absolute;top:-3px;right:-3px;background:#FBC02D;color:#333;border-radius:50%;width:20px;height:20px;font-size:.68rem;font-weight:700;display:none;align-items:center;justify-content:center;pointer-events:none}
+#chat-drawer{position:fixed;bottom:92px;right:24px;width:320px;height:460px;background:#fff;border-radius:18px;box-shadow:0 8px 40px rgba(0,0,0,.22);display:none;flex-direction:column;z-index:901;overflow:hidden}
+.cdh{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.cdh-info h3{margin:0;font-size:.95rem;font-family:'Poppins',sans-serif}
+.cdh-info p{margin:0;font-size:.72rem;opacity:.8}
+.cd-close{margin-left:auto;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:.85rem;border-radius:50%;width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cd-msgs{flex:1;overflow-y:auto;padding:12px 12px 4px;display:flex;flex-direction:column;gap:6px;background:#f7f7f7}
+.cd-msg{max-width:82%;font-size:.84rem;line-height:1.45;padding:8px 12px;border-radius:14px;word-break:break-word}
+.cd-msg.s{background:var(--red);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+.cd-msg.t{background:#fff;color:#333;align-self:flex-start;border:1px solid #e8e8e8;border-bottom-left-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.cd-msg-time{font-size:.62rem;opacity:.65;margin-top:2px;display:block}
+.cd-empty{text-align:center;color:#bbb;font-size:.82rem;padding:40px 16px;margin:auto;line-height:1.6}
+.cd-input{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #ebebeb;background:#fff}
+.cd-input input{flex:1;border:1.5px solid #e0e0e0;border-radius:22px;padding:8px 14px;font-size:.84rem;outline:none;transition:.2s}
+.cd-input input:focus{border-color:var(--red)}
+.cd-send{background:var(--red);color:#fff;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s}
+.cd-send:hover{background:var(--red-dark)}
+/* Professor – lista de chats */
+.tc-list{display:flex;flex-direction:column;gap:8px}
+.tc-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:12px;cursor:pointer;border:1.5px solid #e0e0e0;transition:.2s}
+.tc-item:hover{border-color:var(--red);background:#fff8f8}
+.tc-av{width:42px;height:42px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;flex-shrink:0;font-family:'Poppins',sans-serif}
+.tc-name{font-weight:600;font-size:.9rem;color:#333}
+.tc-prev{font-size:.76rem;color:#757575;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+.tc-badge{background:var(--red);color:#fff;border-radius:50%;min-width:20px;height:20px;font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-left:auto;padding:0 4px}
+/* Professor – conversa aberta */
+.tc-conv{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.tc-conv-hd{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px}
+.tc-conv-msgs{height:320px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:7px;background:#f7f7f7}
+.tc-conv-inp{display:flex;gap:8px;padding:12px 16px;border-top:1px solid #ebebeb;background:#fff}
+.tc-conv-inp input{flex:1;border:1.5px solid #e0e0e0;border-radius:22px;padding:9px 16px;font-size:.84rem;outline:none;transition:.2s}
+.tc-conv-inp input:focus{border-color:var(--red)}
+.tc-conv-inp button{background:var(--red);color:#fff;border:none;border-radius:22px;padding:9px 20px;cursor:pointer;font-size:.84rem;font-weight:600;transition:.2s}
+.tc-conv-inp button:hover{background:var(--red-dark)}
+.tc-setup{background:#fff8e1;border:1.5px solid #FBC02D;border-radius:14px;padding:24px;text-align:center}
+
 /* PRINT */
 @media print{
   #topbar,#teacher-area .teacher-topbar,.report-print-bar,.t-back-btn,.t-nav-btn,.teacher-nav,
@@ -633,6 +672,30 @@ tr:nth-child(even) td{background:#FFFFFF}
     <button class="logout-btn" style="margin-left:auto" onclick="logout()">Salir</button>
   </div>
   <div class="t-content" id="teacher-content"></div>
+</div>
+
+<!-- ===== CHAT FAB (aluno) ===== -->
+<button id="chat-fab" onclick="toggleChat()" title="Falar com Professor Gabriel">
+  💬<span id="chat-fab-badge"></span>
+</button>
+
+<!-- ===== CHAT DRAWER (aluno) ===== -->
+<div id="chat-drawer">
+  <div class="cdh">
+    <span style="font-size:1.4rem">👨‍🏫</span>
+    <div class="cdh-info">
+      <h3>Professor Gabriel</h3>
+      <p>Tire suas dúvidas aqui</p>
+    </div>
+    <button class="cd-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cd-msgs" id="chat-msgs">
+    <div class="cd-empty">Envie uma mensagem ao Professor 👋</div>
+  </div>
+  <div class="cd-input">
+    <input type="text" id="chat-input" placeholder="Digite sua mensagem…" onkeydown="if(event.key==='Enter')sendChatMsg()">
+    <button class="cd-send" onclick="sendChatMsg()">➤</button>
+  </div>
 </div>
 
 <script src="content.js"></script>
@@ -2350,6 +2413,9 @@ function loginStudent(){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('app').style.display='block';
   document.getElementById('user-badge').textContent = name;
+  const fab = document.getElementById('chat-fab');
+  if(fab) fab.style.display='flex';
+  chatStartPolling();
   showHome();
 }
 
@@ -2366,6 +2432,13 @@ function loginTeacher(){
 function logout(){
   localStorage.removeItem('esp_session');
   currentUser = null;
+  chatStopPolling();
+  const fab = document.getElementById('chat-fab');
+  if(fab){ fab.style.display='none'; }
+  const drawer = document.getElementById('chat-drawer');
+  if(drawer){ drawer.style.display='none'; }
+  chatOpen = false;
+  tcCurrentStudent = null;
   document.getElementById('app').style.display='none';
   document.getElementById('teacher-area').style.display='none';
   document.getElementById('login-screen').style.display='flex';
@@ -4440,6 +4513,7 @@ function teacherNav(active){
     <button class="t-nav-btn${active==='panel'?' active':''}" onclick="scheduleEditorOpen=false;renderTeacherPanel()">📅 Hoje</button>
     <button class="t-nav-btn${active==='students'?' active':''}" onclick="renderTeacherDashboard()">👥 Alunos</button>
     <button class="t-nav-btn${active==='planejar'?' active':''}" onclick="renderPlanejamentoTab()">📝 Planejar</button>
+    <button class="t-nav-btn${active==='chat'?' active':''}" onclick="renderChatTab()" id="tc-nav-btn">💬 Chat</button>
   </div>`;
 }
 
@@ -5697,6 +5771,205 @@ function saveTeacherNote(studentName, noteKey, lv, modIdx){
 /* ================================================================
    INIT — restaura sessao salva
 ================================================================ */
+/* ================================================================
+   CHAT — Firebase Realtime Database
+   ──────────────────────────────────────────────────────────────
+   Para ativar: substitua FIREBASE_DB_URL pela URL do seu banco.
+   Passos:
+   1. console.firebase.google.com → Criar projeto grátis
+   2. Realtime Database → Criar banco → Modo de teste
+   3. Copie a URL (ex: https://meu-projeto-rtdb.firebaseio.com)
+   4. Cole abaixo no lugar de 'CONFIGURAR'
+================================================================ */
+const FIREBASE_DB_URL = 'CONFIGURAR';
+const FB_OK = !FIREBASE_DB_URL.includes('CONFIGURAR');
+
+function chatKey(n){ return n.replace(/[.#$\/\[\]]/g,'_'); }
+function fmtHora(ts){ return new Date(ts).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}); }
+function fmtDia(ts){ return new Date(ts).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}); }
+
+async function fbGet(p){
+  if(!FB_OK) return null;
+  try{ const r=await fetch(`${FIREBASE_DB_URL}/${p}.json`); return r.ok?r.json():null; }catch(e){return null;}
+}
+async function fbPush(p,d){
+  if(!FB_OK) return null;
+  try{ const r=await fetch(`${FIREBASE_DB_URL}/${p}.json`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}); return r.json(); }catch(e){return null;}
+}
+async function fbPut(p,d){
+  if(!FB_OK) return;
+  try{ await fetch(`${FIREBASE_DB_URL}/${p}.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}); }catch(e){}
+}
+
+/* ── ALUNO: botão flutuante ─────────────────────────────── */
+let chatOpen=false, chatPoll=null, tcCurrentStudent=null, tcPoll=null;
+
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const drawer=document.getElementById('chat-drawer');
+  drawer.style.display=chatOpen?'flex':'none';
+  if(chatOpen){ loadStudentMsgs(); clearInterval(chatPoll); chatPoll=setInterval(loadStudentMsgs,5000); }
+  else{ clearInterval(chatPoll); updateChatBadge(); }
+}
+function chatStartPolling(){ if(FB_OK) setTimeout(()=>{updateChatBadge(); setInterval(updateChatBadge,15000);},2000); }
+function chatStopPolling(){ clearInterval(chatPoll); clearInterval(tcPoll); }
+
+async function loadStudentMsgs(){
+  if(!currentUser||currentUser.type!=='student') return;
+  const container=document.getElementById('chat-msgs');
+  if(!container) return;
+  if(!FB_OK){
+    container.innerHTML='<div class="cd-empty">⚙️ Chat em configuração pelo Professor.<br>Em breve disponível!</div>';
+    return;
+  }
+  const key=chatKey(currentUser.name);
+  const data=await fbGet(`chats/${key}/messages`);
+  if(!data){ container.innerHTML='<div class="cd-empty">Envie uma mensagem ao Professor 👋</div>'; return; }
+  const msgs=Object.values(data).sort((a,b)=>a.timestamp-b.timestamp);
+  container.innerHTML=msgs.map(m=>`
+    <div class="cd-msg ${m.sender==='student'?'s':'t'}">
+      ${m.text}<span class="cd-msg-time">${fmtHora(m.timestamp)}</span>
+    </div>`).join('');
+  container.scrollTop=container.scrollHeight;
+  for(const [id,m] of Object.entries(data)){
+    if(m.sender==='teacher'&&!m.read) await fbPut(`chats/${key}/messages/${id}/read`,true);
+  }
+  updateChatBadge();
+}
+
+async function sendChatMsg(){
+  const input=document.getElementById('chat-input');
+  const text=input.value.trim();
+  if(!text||!currentUser) return;
+  if(!FB_OK){ alert('Chat ainda não configurado. Aguarde o Professor Gabriel ativar o chat.'); return; }
+  input.value='';
+  const key=chatKey(currentUser.name);
+  await fbPush(`chats/${key}/messages`,{text,sender:'student',timestamp:Date.now(),read:false});
+  await fbPut(`chats/${key}/meta`,{name:currentUser.name,lastMsg:text,lastTime:Date.now()});
+  loadStudentMsgs();
+}
+
+async function updateChatBadge(){
+  if(!currentUser||currentUser.type!=='student'||!FB_OK) return;
+  const key=chatKey(currentUser.name);
+  const data=await fbGet(`chats/${key}/messages`);
+  const badge=document.getElementById('chat-fab-badge');
+  if(!badge) return;
+  if(!data){badge.style.display='none';return;}
+  const n=Object.values(data).filter(m=>m.sender==='teacher'&&!m.read).length;
+  badge.style.display=n>0?'flex':'none';
+  badge.textContent=n>0?n:'';
+}
+
+/* ── PROFESSOR: painel de chat ──────────────────────────── */
+async function renderChatTab(){
+  const content=document.getElementById('teacher-content');
+  clearInterval(tcPoll); tcCurrentStudent=null;
+  content.innerHTML=teacherNav('chat')+`
+    <div style="max-width:600px;margin:0 auto;padding:20px 16px">
+      <h2 style="font-family:'Poppins',sans-serif;margin-bottom:4px">💬 Chat com Alunos</h2>
+      <p style="color:#757575;margin-bottom:20px;font-size:.9rem">Converse com seus alunos em tempo real.</p>
+      <div id="tc-body"></div>
+    </div>`;
+  if(!FB_OK){
+    document.getElementById('tc-body').innerHTML=`
+      <div class="tc-setup">
+        <div style="font-size:2.2rem;margin-bottom:8px">⚙️</div>
+        <h3 style="font-family:'Poppins',sans-serif;margin:0 0 8px;color:#333">Ative o Chat</h3>
+        <p style="color:#757575;font-size:.88rem;margin:0 0 16px">Siga os passos para ativar o chat gratuito:</p>
+        <ol style="text-align:left;font-size:.85rem;color:#555;line-height:2.2;margin:0">
+          <li>Acesse <strong>console.firebase.google.com</strong> e faça login com Google</li>
+          <li>Clique em <strong>"Criar projeto"</strong> → dê um nome → continuar</li>
+          <li>No menu lateral: <strong>Realtime Database</strong> → <strong>Criar banco de dados</strong></li>
+          <li>Escolha <strong>"Modo de teste"</strong> → Ativar</li>
+          <li>Copie a URL do banco (ex: <code>https://meu-projeto-rtdb.firebaseio.com</code>)</li>
+          <li>Me envie a URL e eu ativo o chat em 1 minuto ✅</li>
+        </ol>
+      </div>`;
+    return;
+  }
+  loadTcList();
+  tcPoll=setInterval(()=>{ if(!tcCurrentStudent) loadTcList(); },7000);
+}
+
+async function loadTcList(){
+  const body=document.getElementById('tc-body');
+  if(!body) return;
+  const data=await fbGet('chats');
+  if(!data||!Object.keys(data).length){
+    body.innerHTML='<div style="text-align:center;color:#aaa;padding:40px 20px;font-size:.88rem">Nenhuma mensagem ainda.<br>Os alunos verão o botão 💬 ao entrar na plataforma.</div>';
+    return;
+  }
+  const list=Object.values(data).filter(s=>s&&s.meta).sort((a,b)=>(b.meta.lastTime||0)-(a.meta.lastTime||0));
+  body.innerHTML=`<div class="tc-list">${list.map(s=>{
+    const unread=s.messages?Object.values(s.messages).filter(m=>m.sender==='student'&&!m.read).length:0;
+    const ini=s.meta.name.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+    return `<div class="tc-item" onclick="openTcChat('${s.meta.name.replace(/'/g,"\\'")}')">
+      <div class="tc-av">${ini}</div>
+      <div style="flex:1;min-width:0">
+        <div class="tc-name">${s.meta.name}</div>
+        <div class="tc-prev">${s.meta.lastMsg||'...'}</div>
+      </div>
+      ${unread>0?`<div class="tc-badge">${unread}</div>`:`<span style="color:#bbb;font-size:.73rem;flex-shrink:0">${fmtDia(s.meta.lastTime)}</span>`}
+    </div>`;
+  }).join('')}</div>`;
+}
+
+async function openTcChat(name){
+  tcCurrentStudent=name;
+  clearInterval(tcPoll);
+  const body=document.getElementById('tc-body');
+  const key=chatKey(name);
+  const ini=name.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  body.innerHTML=`
+    <div class="tc-conv">
+      <div class="tc-conv-hd">
+        <div class="tc-av">${ini}</div>
+        <div>
+          <div style="font-weight:700;font-family:'Poppins',sans-serif">${name}</div>
+          <div style="font-size:.72rem;opacity:.8">Aluno</div>
+        </div>
+        <button onclick="tcCurrentStudent=null;clearInterval(tcPoll);renderChatTab()" style="margin-left:auto;background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.8rem">← Voltar</button>
+      </div>
+      <div class="tc-conv-msgs" id="tc-msgs"><div style="text-align:center;color:#aaa;font-size:.82rem;padding:20px">Carregando…</div></div>
+      <div class="tc-conv-inp">
+        <input type="text" id="tc-input" placeholder="Responder ${name}…" onkeydown="if(event.key==='Enter')sendTcMsg()">
+        <button onclick="sendTcMsg()">Enviar</button>
+      </div>
+    </div>`;
+  loadTcMsgs(name);
+  tcPoll=setInterval(()=>loadTcMsgs(name),5000);
+}
+
+async function loadTcMsgs(name){
+  const key=chatKey(name);
+  const data=await fbGet(`chats/${key}/messages`);
+  const c=document.getElementById('tc-msgs');
+  if(!c) return;
+  if(!data){c.innerHTML='<div style="text-align:center;color:#aaa;font-size:.82rem;padding:20px">Nenhuma mensagem ainda.</div>';return;}
+  const msgs=Object.entries(data).sort((a,b)=>a[1].timestamp-b[1].timestamp);
+  c.innerHTML=msgs.map(([,m])=>`
+    <div class="cd-msg ${m.sender==='teacher'?'s':'t'}">
+      ${m.text}<span class="cd-msg-time">${fmtHora(m.timestamp)}</span>
+    </div>`).join('');
+  c.scrollTop=c.scrollHeight;
+  for(const [id,m] of msgs){
+    if(m.sender==='student'&&!m.read) await fbPut(`chats/${key}/messages/${id}/read`,true);
+  }
+}
+
+async function sendTcMsg(){
+  const input=document.getElementById('tc-input');
+  const text=input.value.trim();
+  if(!text||!tcCurrentStudent) return;
+  input.value='';
+  const key=chatKey(tcCurrentStudent);
+  await fbPush(`chats/${key}/messages`,{text,sender:'teacher',timestamp:Date.now(),read:false});
+  await fbPut(`chats/${key}/meta/lastMsg`,`Prof: ${text}`);
+  await fbPut(`chats/${key}/meta/lastTime`,Date.now());
+  loadTcMsgs(tcCurrentStudent);
+}
+
 (function initSession(){
   const raw = localStorage.getItem('esp_session');
   if(!raw) return;
@@ -5707,6 +5980,8 @@ function saveTeacherNote(studentName, noteKey, lv, modIdx){
       document.getElementById('login-screen').style.display='none';
       document.getElementById('app').style.display='block';
       document.getElementById('user-badge').textContent = currentUser.name;
+      const fab=document.getElementById('chat-fab'); if(fab) fab.style.display='flex';
+      chatStartPolling();
       showHome();
     } else if(sess && sess.type==='teacher'){
       currentUser = sess;
